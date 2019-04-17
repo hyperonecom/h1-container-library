@@ -36,6 +36,8 @@ const generateImage = async (source, output, context) => {
 
 const main = async () => {
     let buildContent = ['#!/bin/sh'];
+    let deployContent = ['#!/bin/sh'];
+
     const files = await readDir(__dirname);
     for (const file of files) {
         if(file.startsWith('.')){
@@ -53,10 +55,14 @@ const main = async () => {
             await generateImage(source, output, {
                 PHP_VERSION: version
             });
-            buildContent.push(`docker build -t hyperone/${file}:${version} ${file}/${version}`)
+            const imageName = `quay.io/hyperone/${file}:${version}`;
+            buildContent.push(`docker pull ${imageName} && echo true`);
+            buildContent.push(`docker build --pull -t ${imageName} ${file}/${version}`);
+            deployContent.push(`docker push ${imageName}`);
         }
     }
     await writeFile(path.join(__dirname, 'build.sh'), buildContent.join("\n"));
+    await writeFile(path.join(__dirname, 'deploy.sh'), buildContent.join("\n"));
 };
 
 main().then(console.log).catch(err => {
