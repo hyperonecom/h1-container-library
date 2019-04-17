@@ -1,4 +1,4 @@
-FROM hyperone/php-apache:5.6
+FROM quay.io/hyperone/php-apache:5.6
 LABEL maintainer="HyperOne"
 ENV WP_CLI_VERSION="2.1.0"
 ENV H1_CLI_VERSION="1.4.0"
