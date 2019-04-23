@@ -7,6 +7,6 @@ RUN apt-get update \
 && rm -rf /var/lib/apt/lists/*
 RUN curl -s -L "https://github.com/wp-cli/wp-cli/releases/download/v${WP_CLI_VERSION}/wp-cli-${WP_CLI_VERSION}.phar" -o /usr/local/bin/wp \
 && chmod +x /usr/local/bin/wp
-RUN curl -s -L "https://github.com/hyperonecom/h1-cli/releases/latest/download/h1-linux" -o /bin/h1 \
+RUN curl -s -L "https://github.com/hyperonecom/h1-cli/releases/latest/download/h1-linux" -o /usr/local/bin/h1 \
 && chmod +x /usr/local/bin/h1
 CMD ["/bin/bash"]
