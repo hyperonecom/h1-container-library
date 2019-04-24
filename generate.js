@@ -35,8 +35,8 @@ const generateImage = async (source, output, context) => {
 };
 
 const main = async () => {
-    let buildContent = ['#!/bin/sh'];
-    let deployContent = ['#!/bin/sh'];
+    let buildContent = ['#!/bin/sh', 'set -eux'];
+    let deployContent = ['#!/bin/sh', 'set -eux'];
 
     const files = await readDir(__dirname);
     for (const file of files) {
@@ -62,7 +62,7 @@ const main = async () => {
         }
     }
     await writeFile(path.join(__dirname, 'build.sh'), buildContent.join("\n"));
-    await writeFile(path.join(__dirname, 'deploy.sh'), buildContent.join("\n"));
+    await writeFile(path.join(__dirname, 'deploy.sh'), deployContent.join("\n"));
 };
 
 main().then(console.log).catch(err => {

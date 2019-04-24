@@ -9,4 +9,5 @@ RUN curl -s -L "https://github.com/wp-cli/wp-cli/releases/download/v${WP_CLI_VER
 && chmod +x /usr/local/bin/wp
 RUN curl -s -L "https://github.com/hyperonecom/h1-cli/releases/latest/download/h1-linux" -o /usr/local/bin/h1 \
 && chmod +x /usr/local/bin/h1
+WORKDIR /data
 CMD ["/bin/bash"]
