@@ -56,8 +56,7 @@ const main = async () => {
                 PHP_VERSION: version
             });
             const imageName = `quay.io/hyperone/${file}:${version}`;
-            buildContent.push(`docker pull ${imageName} || echo true`);
-            buildContent.push(`docker build --pull -t ${imageName} ${file}/${version}`);
+            buildContent.push(`docker build -t ${imageName} ${file}/${version}`);
             deployContent.push(`docker push ${imageName}`);
         }
     }
