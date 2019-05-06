@@ -8,6 +8,7 @@ services:
 script:
   - docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" quay.io
   - ./build.sh
+  - ./test.sh
 
 deploy:
   provider: script

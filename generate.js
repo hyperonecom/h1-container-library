@@ -37,7 +37,7 @@ const generateImage = async (source, output, context) => {
 const main = async () => {
     let buildContent = ['#!/bin/sh', 'set -eux'];
     let deployContent = ['#!/bin/sh', 'set -eux'];
-
+    let testContent = ['#!/bin/sh', 'set -eux'];
     const files = await readDir(__dirname);
     for (const file of files) {
         if(file.startsWith('.')){
@@ -49,6 +49,10 @@ const main = async () => {
             continue;
         }
         for (const version of PHP_VERSION) {
+            let testEnabled = true;
+            await stat(path.join(repositoryDir,'test')).catch(() => {
+                testEnabled = false;
+            });
             const source = path.join(repositoryDir, 'base');
             const output = path.join(repositoryDir, version);
             console.log({file, version});
@@ -58,9 +62,14 @@ const main = async () => {
             const imageName = `quay.io/hyperone/${file}:${version}`;
             buildContent.push(`docker build -t ${imageName} ${file}/${version}`);
             deployContent.push(`docker push ${imageName}`);
+
+            if(testEnabled){
+                testContent.push(`IMAGE="${imageName}" bats ${file}/test/*`);
+            }
         }
     }
     await writeFile(path.join(__dirname, 'build.sh'), buildContent.join("\n"));
+    await writeFile(path.join(__dirname, 'test.sh'), testContent.join("\n"));
     await writeFile(path.join(__dirname, 'deploy.sh'), deployContent.join("\n"));
 };
 
