@@ -11,5 +11,5 @@ RUN curl "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_$(u
 && rm /tmp/ioncube.tar.gz
 RUN adduser -uid 23456 --disabled-password --gecos "" --home /var/www run-user && chown run-user:run-user -R /run/lock/apache2 /run/apache2 /var/log/apache2 /var/cache/apache2/
 ENV APACHE_RUN_USER run-user
-ENV APACHE_RUN_GRORUP run-user
+ENV APACHE_RUN_GROUP run-user
 VOLUME /data
