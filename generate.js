@@ -9,6 +9,10 @@ const path = require('path');
 
 PHP_VERSION = ['7.2', '5.6'];
 
+const ignoredDirectory = [
+    'content'
+];
+
 async function saveTemplated(sourceFile, context, outputFile) {
     let content = await readFile(sourceFile, {encoding: 'utf-8'});
     for (const [key, value] of Object.entries(context)) {
@@ -40,7 +44,7 @@ const main = async () => {
     let testContent = ['#!/bin/sh', 'set -eux'];
     const files = await readDir(__dirname);
     for (const file of files) {
-        if(file.startsWith('.')){
+        if(file.startsWith('.') || ignoredDirectory.includes(file)){
             continue;
         }
         const repositoryDir = path.join(__dirname, file);
@@ -76,4 +80,5 @@ const main = async () => {
 main().then(console.log).catch(err => {
     console.error(err);
     console.error(err.stack);
+    process.exit(1);
 });

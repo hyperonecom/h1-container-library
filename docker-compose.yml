@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  reverse-proxy:
+    image: traefik # The official Traefik docker image
+    command: |
+      --api --docker
+      --entryPoints='Name:http Address::80'
+      --entryPoints='Name:https Address::443 TLS'
+      --logLevel=DEBUG
+    ports:
+      - "80:80"     # The HTTP port
+      - "8090:8080" # The Web UI (enabled by --api)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
+  php56:
+    build:
+      context: php-apache/5.6
+    labels:
+      - "traefik.frontend.rule=Host:php56.127.0.0.1.xip.io"
+    volumes:
+      - ./content/:/data/public
+  php72:
+    build:
+      context: php-apache/7.2
+    labels:
+      - "traefik.frontend.rule=Host:php72.127.0.0.1.xip.io"
+    volumes:
+      - ./content/:/data/public
