@@ -14,4 +14,5 @@ ENV APACHE_RUN_USER run-user
 ENV APACHE_RUN_GROUP run-user
 RUN a2enmod remoteip
 RUN echo "\nRemoteIPHeader X-Forwarded-For\nSetEnvIf X-Forwarded-Proto https HTTPS=on" >> /etc/apache2/apache2.conf
+ENV HOME=/data
 VOLUME /data
