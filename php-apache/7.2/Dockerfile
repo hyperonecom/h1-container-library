@@ -9,10 +9,9 @@ RUN curl "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_$(u
 && chown root:staff "$extension_dir/ioncube_loader_lin_7.2.so" \
 && echo "zend_extension = $extension_dir/ioncube_loader_lin_7.2.so" > /usr/local/etc/php/php.ini \
 && rm /tmp/ioncube.tar.gz
-RUN adduser -uid 23456 --disabled-password --gecos "" --home /var/www run-user && chown run-user:run-user -R /run/lock/apache2 /run/apache2 /var/log/apache2 /var/cache/apache2/
+RUN adduser -uid 23456 --disabled-password --gecos "" --home /data run-user && chown run-user:run-user -R /run/lock/apache2 /run/apache2 /var/log/apache2 /var/cache/apache2/ /data
 ENV APACHE_RUN_USER run-user
 ENV APACHE_RUN_GROUP run-user
 RUN a2enmod remoteip
 RUN echo "\nRemoteIPHeader X-Forwarded-For\nSetEnvIf X-Forwarded-Proto https HTTPS=on" >> /etc/apache2/apache2.conf
-ENV HOME=/data
 VOLUME /data
