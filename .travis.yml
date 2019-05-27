@@ -5,11 +5,15 @@ node_js: 10
 services:
   - docker
 
+env:
+  HADOLINT: "${HOME}/hadolint"
 script:
+  - curl -sL -o ${HADOLINT} "https://github.com/hadolint/hadolint/releases/download/v1.16.0/hadolint-$(uname -s)-$(uname -m)"
+    && chmod 700 ${HADOLINT}
+  - git ls-files --exclude='Dockerfile*' --ignored | xargs --max-lines=1 ${HADOLINT}
   - docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" quay.io
   - ./build.sh
   - sudo ./test.sh
-
 deploy:
   provider: script
   script: ./deploy.sh
