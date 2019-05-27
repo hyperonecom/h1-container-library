@@ -33,3 +33,19 @@
 	[ "$output" == "content" ]
 	docker container stop $container_id;
 }
+
+@test "imagick available" {
+	tmp_dir=$(mktemp -d);
+	public_dir="${tmp_dir}/public";
+	random_port=$((((RANDOM + RANDOM) % 63001) + 2000))
+	mkdir -p "$public_dir";
+	chown 23456:23456 -R "$tmp_dir";
+	echo "<?php var_dump(Imagick::getCopyright()); ?>" > "${public_dir}/index.php";
+	container_id=$(docker run --rm -d -v "${tmp_dir}:/data" -p "$random_port:80" "$IMAGE");
+	sleep 3
+	curl -s "localhost:$random_port/index.php";
+	run curl -s "localhost:$random_port/index.php";
+	[ "$status" -eq 0 ]
+	[[ "$output" =~ .*ImageMagick.* ]];
+	docker container stop $container_id;
+}
