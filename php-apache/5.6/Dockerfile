@@ -2,7 +2,8 @@ FROM chialab/php:5.6-apache
 LABEL maintainer="HyperOne"
 LABEL rbx.shell_image="quay.io/hyperone/php-apache-shell:5.6"
 ENV IMAGICK_VERSION="3.4.4"
-RUN rm -r /var/www/html && ln -s /data/public /var/www/html
+RUN sed -i 's@DocumentRoot .*@DocumentRoot /data/public@g' /etc/apache2/sites-available/000-default.conf && \
+sed -i 's@Directory /var/www/@Directory /data/public@g' /etc/apache2/conf-available/docker-php.conf /etc/apache2/apache2.conf
 RUN echo "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_$(uname -m | sed 's/_/-/g').tar.gz"
 RUN curl "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_$(uname -m | sed 's/_/-/g').tar.gz" -s -o /tmp/ioncube.tar.gz \
 && extension_dir=$(php -i | sed -n -E '/extension_dir/s/^extension_dir.+?=> (.+?)/\1/gp') \
