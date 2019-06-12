@@ -3,7 +3,14 @@ LABEL maintainer="HyperOne"
 ENV WP_CLI_VERSION="2.1.0"
 ENV H1_CLI_VERSION="1.5.1"
 RUN apt-get update \
-&& apt-get install -y --no-install-recommends wget nano mc vim mariadb-client openssh-sftp-server \
+&& apt-get install -y --no-install-recommends rsync wget nano mc vim mariadb-client openssh-sftp-server subversion
+RUN fetchDeps="gnupg lsb-release" \
+&& apt-get install -y --no-install-recommends $fetchDeps \
+&& wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
+&& echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -c -s)-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
+&& apt-get update \
+&& apt-get install -y --no-install-recommends postgresql-client-10 \
+&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $fetchDeps \
 && rm -rf /var/lib/apt/lists/*
 RUN curl -s -L "https://github.com/wp-cli/wp-cli/releases/download/v${WP_CLI_VERSION}/wp-cli-${WP_CLI_VERSION}.phar" -o /usr/local/bin/wp \
 && chmod +x /usr/local/bin/wp
