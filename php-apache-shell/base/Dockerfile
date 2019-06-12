@@ -1,7 +1,6 @@
 FROM quay.io/hyperone/php-apache:%%PHP_VERSION%%
 LABEL maintainer="HyperOne"
 ENV WP_CLI_VERSION="2.1.0"
-ENV H1_CLI_VERSION="1.5.1"
 RUN fetchDeps="gnupg lsb-release" \
 && apt-get update \
 && apt-get install -y --no-install-recommends $fetchDeps rsync wget nano mc vim mariadb-client openssh-sftp-server subversion \

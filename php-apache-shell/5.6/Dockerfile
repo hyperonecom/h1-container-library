@@ -1,11 +1,9 @@
 FROM quay.io/hyperone/php-apache:5.6
 LABEL maintainer="HyperOne"
 ENV WP_CLI_VERSION="2.1.0"
-ENV H1_CLI_VERSION="1.5.1"
-RUN apt-get update \
-&& apt-get install -y --no-install-recommends rsync wget nano mc vim mariadb-client openssh-sftp-server subversion
 RUN fetchDeps="gnupg lsb-release" \
-&& apt-get install -y --no-install-recommends $fetchDeps \
+&& apt-get update \
+&& apt-get install -y --no-install-recommends $fetchDeps rsync wget nano mc vim mariadb-client openssh-sftp-server subversion \
 && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
 && echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -c -s)-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
 && apt-get update \
