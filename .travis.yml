@@ -7,6 +7,7 @@ services:
 
 script:
   - docker login -u="$DOCKER_LOGIN" -p="$DOCKER_PASSWORD" quay.io
+  - docker login -u="no-used" -p="$H1_REGISTRY_PASSWORD" 5d08fcb2ca3915e50f7c2c55.registry.pl-waw-1.hyperone.cloud
   - ./build.sh
   - sudo ./test.sh
 

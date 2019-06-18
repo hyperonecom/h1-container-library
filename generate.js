@@ -13,19 +13,21 @@ const ignoredDirectory = [
     'content'
 ];
 
+const repos = ['quay.io', '5d08fcb2ca3915e50f7c2c55.registry.pl-waw-1.hyperone.cloud'];
+
 async function saveTemplated(sourceFile, context, outputFile) {
     let content = await readFile(sourceFile, {encoding: 'utf-8'});
     for (const [key, value] of Object.entries(context)) {
         content = content.replace(new RegExp(`%%${key}%%`, 'g'), value);
     }
-    await writeFile(outputFile, content, {encoding: 'utf-8'}, );
+    await writeFile(outputFile, content, {encoding: 'utf-8'},);
     console.log(`Saved templated '${sourceFile}' into '${outputFile}'`)
 }
 
 const generateImage = async (source, output, context) => {
     const files = await readDir(source);
     await mkDir(output).catch(err => {
-        if(err.code !== 'EEXIST') throw err;
+        if (err.code !== 'EEXIST') throw err;
     });
     for (const file of files) {
         const sourceFile = path.join(source, file);
@@ -44,7 +46,7 @@ const main = async () => {
     let testContent = ['#!/bin/sh', 'set -eux'];
     const files = await readDir(__dirname);
     for (const file of files) {
-        if(file.startsWith('.') || ignoredDirectory.includes(file)){
+        if (file.startsWith('.') || ignoredDirectory.includes(file)) {
             continue;
         }
         const repositoryDir = path.join(__dirname, file);
@@ -54,7 +56,7 @@ const main = async () => {
         }
         for (const version of PHP_VERSION) {
             let testEnabled = true;
-            await stat(path.join(repositoryDir,'test')).catch(() => {
+            await stat(path.join(repositoryDir, 'test')).catch(() => {
                 testEnabled = false;
             });
             const source = path.join(repositoryDir, 'base');
@@ -63,13 +65,16 @@ const main = async () => {
             await generateImage(source, output, {
                 PHP_VERSION: version
             });
-            const imageName = `quay.io/hyperone/${file}:${version}`;
-            buildContent.push(`docker build -t ${imageName} ${file}/${version}`);
-            deployContent.push(`docker push ${imageName}`);
 
-            if(testEnabled){
-                testContent.push(`IMAGE="${imageName}" bats ${file}/test/*`);
-            }
+            repos.forEach((name, index) => {
+                const imageName = `${name}/hyperone/${file}:${version}`;
+                buildContent.push(`docker build -t ${imageName} ${file}/${version}`);
+                deployContent.push(`docker push ${imageName}`);
+                if (index === 0 && testEnabled) {
+                    testContent.push(`IMAGE="${imageName}" bats ${file}/test/*`);
+                }
+            });
+
         }
     }
     await writeFile(path.join(__dirname, 'build.sh'), buildContent.join("\n"));
