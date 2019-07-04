@@ -8,7 +8,9 @@ services:
 script:
   - npm install
   - node ./generate.js
-  - git diff-index --quiet HEAD --
+  - git status
+  - git diff HEAD
+  - test -z "$(git status --porcelain docs)"
   - ./build.sh
   - sudo ./test.sh
 
