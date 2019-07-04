@@ -7,8 +7,6 @@ const mkDir = util.promisify(fs.mkdir);
 const stat = util.promisify(fs.stat);
 const path = require('path');
 
-PHP_VERSION = ['7.2', '5.6'];
-
 const ignoredDirectory = [
     'content'
 ];
@@ -54,27 +52,24 @@ const main = async () => {
         if (!s.isDirectory()) {
             continue;
         }
-        for (const version of PHP_VERSION) {
+        const config = require(await path.join(repositoryDir, 'tags.json'));
+        for (const tag of Object.keys(config)) {
+
             let testEnabled = true;
             await stat(path.join(repositoryDir, 'test')).catch(() => {
                 testEnabled = false;
             });
             const source = path.join(repositoryDir, 'base');
-            const output = path.join(repositoryDir, version);
-            console.log({file, version});
-            await generateImage(source, output, {
-                PHP_VERSION: version
-            });
-
+            const output = path.join(repositoryDir, tag);
+            await generateImage(source, output, config[tag].args || {});
             repos.forEach((name, index) => {
-                const imageName = `${name}/hyperone/${file}:${version}`;
-                buildContent.push(`docker build -t ${imageName} ${file}/${version}`);
+                const imageName = `${name}/hyperone/${file}:${tag}`;
+                buildContent.push(`docker build -t ${imageName} ${file}/${tag}`);
                 deployContent.push(`docker push ${imageName}`);
                 if (index === 0 && testEnabled) {
                     testContent.push(`IMAGE="${imageName}" bats ${file}/test/*`);
                 }
             });
-
         }
     }
     await writeFile(path.join(__dirname, 'build.sh'), buildContent.join("\n"));
