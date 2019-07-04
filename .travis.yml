@@ -1,11 +1,14 @@
 language: node_js
 
-node_js: 10
+node_js: 12
 
 services:
   - docker
 
 script:
+  - npm install
+  - nodejs ./generate.js
+  - git diff-index --quiet HEAD --
   - ./build.sh
   - sudo ./test.sh
 
