@@ -29,3 +29,11 @@ services:
       - "traefik.frontend.rule=Host:php72.127.0.0.1.xip.io"
     volumes:
       - ./content/:/data/public
+  nginx:
+    image: quay.io/hyperone/nginx-static:latest
+    build:
+      context: nginx-static/latest
+    labels:
+      - "traefik.frontend.rule=Host:nginx.127.0.0.1.xip.io"
+    volumes:
+      - ./content/:/data/public
