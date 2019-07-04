@@ -12,3 +12,5 @@ docker build -t h1cr.io/website/php-apache:7.3 php-apache/7.3
 docker build -t h1cr.io/website/php-apache-shell:5.6 php-apache-shell/5.6
 docker build -t h1cr.io/website/php-apache-shell:7.2 php-apache-shell/7.2
 docker build -t h1cr.io/website/php-apache-shell:7.3 php-apache-shell/7.3
+docker build -t h1cr.io/website/python-passenger:3 python-passenger/3
+docker build -t h1cr.io/website/python-passenger:3.7 python-passenger/3.7

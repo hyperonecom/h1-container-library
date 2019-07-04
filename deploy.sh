@@ -12,3 +12,5 @@ docker push h1cr.io/website/php-apache:7.3
 docker push h1cr.io/website/php-apache-shell:5.6
 docker push h1cr.io/website/php-apache-shell:7.2
 docker push h1cr.io/website/php-apache-shell:7.3
+docker push h1cr.io/website/python-passenger:3
+docker push h1cr.io/website/python-passenger:3.7

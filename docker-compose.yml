@@ -46,6 +46,4 @@ services:
       - "traefik.frontend.rule=Host:nginx.127.0.0.1.xip.io"
       - "traefik.port=8080"
     volumes:
-      - ./content/:/data/
-      - ./content/tmp:/tmp
-      - ./content/var/run:/var/run
+      - ./content/:/data/public
