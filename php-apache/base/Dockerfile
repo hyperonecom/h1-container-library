@@ -18,7 +18,7 @@ RUN apt-get update \
 && pecl install imagick-"$IMAGICK_VERSION" \
 && docker-php-ext-enable imagick
 
-RUN adduser -uid 23456 --disabled-password --gecos "" --home /data run-user && chown run-user:run-user -R /run/lock/apache2 /run/apache2 /var/log/apache2 /var/cache/apache2/ /data
+RUN adduser --uid 23456 --disabled-password --gecos "" --home /data run-user && chown run-user:run-user -R /run/lock/apache2 /run/apache2 /var/log/apache2 /var/cache/apache2/ /data
 ENV APACHE_RUN_USER run-user
 ENV APACHE_RUN_GROUP run-user
 RUN a2enmod remoteip
