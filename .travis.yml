@@ -7,7 +7,7 @@ services:
 
 script:
   - npm install
-  - nodejs ./generate.js
+  - node ./generate.js
   - git diff-index --quiet HEAD --
   - ./build.sh
   - sudo ./test.sh
