@@ -11,7 +11,7 @@ const ignoredDirectory = [
     'content'
 ];
 
-const repos = ['quay.io', '5d08fcb2ca3915e50f7c2c55.registry.pl-waw-1.hyperone.cloud'];
+const repos = ['5d08fcb2ca3915e50f7c2c55.registry.pl-waw-1.hyperone.cloud'];
 
 async function saveTemplated(sourceFile, context, outputFile) {
     let content = await readFile(sourceFile, {encoding: 'utf-8'});
@@ -52,7 +52,7 @@ const main = async () => {
         if (!s.isDirectory()) {
             continue;
         }
-        const config = require(await path.join(repositoryDir, 'tags.json'));
+        const config = require(await path.join(repositoryDir, 'tags'));
         for (const tag of Object.keys(config)) {
 
             let testEnabled = true;
@@ -63,7 +63,7 @@ const main = async () => {
             const output = path.join(repositoryDir, tag);
             await generateImage(source, output, config[tag].args || {});
             repos.forEach((name, index) => {
-                const imageName = `${name}/hyperone/${file}:${tag}`;
+                const imageName = `${name}/${file}:${tag}`;
                 buildContent.push(`docker build -t ${imageName} ${file}/${tag}`);
                 deployContent.push(`docker push ${imageName}`);
                 if (index === 0 && testEnabled) {
