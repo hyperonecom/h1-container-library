@@ -11,7 +11,7 @@ const ignoredDirectory = [
     'content'
 ];
 
-const repos = ['5d08fcb2ca3915e50f7c2c55.registry.pl-waw-1.hyperone.cloud'];
+const repos = ['h1cr.io/website'];
 
 async function saveTemplated(sourceFile, context, outputFile) {
     let content = await readFile(sourceFile, {encoding: 'utf-8'});
