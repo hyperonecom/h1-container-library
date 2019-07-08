@@ -1,6 +1,6 @@
 FROM chialab/php:7.2-apache
 LABEL maintainer="HyperOne"
-LABEL rbx.shell_image="quay.io/hyperone/php-apache-shell:7.2"
+LABEL rbx.shell_image="h1cr.io/website/php-apache-shell:7.2"
 ENV IMAGICK_VERSION="3.4.4"
 RUN sed -i 's@DocumentRoot .*@DocumentRoot /data/public@g' /etc/apache2/sites-available/000-default.conf && \
 sed -i 's@Directory /var/www/@Directory /data/public@g' /etc/apache2/conf-available/docker-php.conf /etc/apache2/apache2.conf
