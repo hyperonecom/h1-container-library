@@ -17,7 +17,12 @@ RUN apt-get update \
 && rm -rf /var/lib/apt/lists/* \
 && pecl install imagick-"$IMAGICK_VERSION" \
 && docker-php-ext-enable imagick
-
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+&& dpkg-reconfigure --frontend=noninteractive locales \
+&& update-locale LANG=en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 RUN adduser --uid 23456 --disabled-password --gecos "" --home /data run-user && chown run-user:run-user -R /run/lock/apache2 /run/apache2 /var/log/apache2 /var/cache/apache2/ /data
 ENV APACHE_RUN_USER run-user
 ENV APACHE_RUN_GROUP run-user
