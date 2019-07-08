@@ -1,4 +1,4 @@
-FROM quay.io/hyperone/php-apache:5.6
+FROM h1cr.io/website/php-apache:5.6
 LABEL maintainer="HyperOne"
 ENV WP_CLI_VERSION="2.1.0"
 RUN fetchDeps="gnupg lsb-release" \

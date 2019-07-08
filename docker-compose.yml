@@ -14,7 +14,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
   php56:
-    image: quay.io/hyperone/php-apache:5.6
+    image: h1cr.io/website/php-apache:5.6
     build:
       context: php-apache/5.6
     labels:
@@ -22,7 +22,7 @@ services:
     volumes:
       - ./content/:/data/public
   php72:
-    image: quay.io/hyperone/php-apache:7.2
+    image: h1cr.io/website/php-apache:7.2
     build:
       context: php-apache/7.2
     labels:
@@ -30,7 +30,7 @@ services:
     volumes:
       - ./content/:/data/public
   nginx:
-    image: quay.io/hyperone/nginx-static:latest
+    image: h1cr.io/website/nginx-static:latest
     build:
       context: nginx-static/latest
     labels:

@@ -13,11 +13,11 @@ RUN curl "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_$(u
 && rm /tmp/ioncube.tar.gz
 RUN apt-get update \
 # Following command add 200 MB dependencies
-&& apt-get install -y --no-install-recommends zlib1g-dev libcurl3-dev libpng-dev libmagickwand-dev \
+&& apt-get install -y --no-install-recommends zlib1g-dev libcurl3-dev libpng-dev libmagickwand-dev locales \
 && rm -rf /var/lib/apt/lists/* \
 && pecl install imagick-"$IMAGICK_VERSION" \
 && docker-php-ext-enable imagick
-RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
 && dpkg-reconfigure --frontend=noninteractive locales \
 && update-locale LANG=en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8

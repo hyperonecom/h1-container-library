@@ -7,5 +7,5 @@
 
 @test "run sftp-server in image" {
 	run docker run --rm "$IMAGE" sftp-server --help
-	[ "$status" -eq 0 ]
+	[ "$status" -eq 1 ]
 }
