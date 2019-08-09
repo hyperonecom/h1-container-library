@@ -8,7 +8,8 @@ const stat = util.promisify(fs.stat);
 const path = require('path');
 
 const ignoredDirectory = [
-    'content'
+    'content',
+    'node_modules'
 ];
 
 const repos = ['h1cr.io/website'];
