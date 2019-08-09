@@ -23,6 +23,7 @@ RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
 ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
+COPY ./php.ini /usr/local/etc/php
 RUN adduser --uid 23456 --disabled-password --gecos "" --home /data run-user && chown run-user:run-user -R /run/lock/apache2 /run/apache2 /var/log/apache2 /var/cache/apache2/ /data
 ENV APACHE_RUN_USER run-user
 ENV APACHE_RUN_GROUP run-user
