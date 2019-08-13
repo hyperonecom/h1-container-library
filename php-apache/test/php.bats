@@ -49,3 +49,8 @@
 	[[ "$output" =~ .*ImageMagick.* ]];
 	docker container stop $container_id;
 }
+
+@test "load ioncube loader" {
+	run docker run --rm "$IMAGE" php -i
+	[[ "$output" == *"with the ionCube PHP Loader"* ]]
+}
