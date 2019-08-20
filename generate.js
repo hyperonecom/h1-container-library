@@ -63,7 +63,7 @@ const main = async () => {
             const source = path.join(repositoryDir, 'base');
             const output = path.join(repositoryDir, tag);
             await stat(path.join(output, '.skip_base')).catch(err => {
-                if (err !== 'ENOENT') throw err;
+                if (err.code !== 'ENOENT') throw err;
                 return generateImage(source, output, config[tag].args || {});
             });
             repos.forEach((name, index) => {

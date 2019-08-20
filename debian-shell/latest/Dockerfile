@@ -1,7 +1,7 @@
 FROM debian:latest
 LABEL maintainer="HyperOne"
 RUN apt-get update \
-&& apt-get install -y --no-install-recommends ca-certificates rsync curl wget nano mc vim mariadb-client openssh-sftp-server subversion locales \
+&& apt-get install -y --no-install-recommends ca-certificates rsync curl unzip wget nano mc vim mariadb-client openssh-sftp-server subversion locales \
 && rm -rf /var/lib/apt/lists/*
 RUN curl -s -L "https://github.com/hyperonecom/h1-cli/releases/latest/download/h1-linux" -o /usr/local/bin/h1 \
 && chmod +x /usr/local/bin/h1
@@ -13,6 +13,5 @@ ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 RUN adduser --uid 23456 --disabled-password --gecos "" --home /data run-user && chown run-user:run-user -R /data
-ENV APACHE_RUN_USER run-user
-ENV APACHE_RUN_GROUP run-user
+USER run-user
 WORKDIR /data
