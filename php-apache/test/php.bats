@@ -14,6 +14,21 @@
   docker container stop $container_id;
 }
 
+@test "custom php.ini load" {
+	tmp_dir=$(mktemp -d);
+	random_port=$((((RANDOM + RANDOM) % 63001) + 2000))
+	mkdir -p ${tmp_dir}/{public,etc/php/conf.d};
+	echo "<?php phpinfo(); ?>" > "${tmp_dir}/public/index.php";
+	echo 'error_prepend_string = "xJHJpiChWeJs7Hc"' > "${tmp_dir}/etc/php/conf.d/custom.ini";
+	chmod -o+rx "$tmp_dir";
+	container_id=$(docker run --rm -d -v "${tmp_dir}:/data/" -p "$random_port:80" "$IMAGE");
+	sleep 3
+	run curl "localhost:$random_port/index.php"
+	[ "$status" -eq 0 ]
+	[[ "$output" == *"xJHJpiChWeJs7Hc"* ]]
+	docker container stop $container_id;
+}
+
 @test "file permission" {
 	tmp_dir=$(mktemp -d);
 	public_dir="${tmp_dir}/public";

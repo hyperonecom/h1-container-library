@@ -9,7 +9,6 @@ RUN curl "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_$(u
 && extension_dir=$(php -i | sed -n -E '/extension_dir/s/^extension_dir.+?=> (.+?)/\1/gp') \
 && tar -xzvf /tmp/ioncube.tar.gz --strip-components=1 -C "$extension_dir" "ioncube/ioncube_loader_lin_%%PHP_VERSION%%.so" \
 && chown root:staff "$extension_dir/ioncube_loader_lin_%%PHP_VERSION%%.so" \
-&& echo "zend_extension = $extension_dir/ioncube_loader_lin_%%PHP_VERSION%%.so" > /usr/local/etc/php/php.ini \
 && rm /tmp/ioncube.tar.gz
 RUN apt-get update \
 # Following command add 200 MB dependencies
@@ -23,7 +22,8 @@ RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
 ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
-COPY ./php.ini /usr/local/etc/php
+COPY ./php.ini /usr/local/etc/php/php.ini
+ENV PHP_INI_SCAN_DIR="/data/etc/php/conf.d/:/usr/local/etc/php/conf.d/"
 RUN adduser --uid 23456 --disabled-password --gecos "" --home /data run-user && chown run-user:run-user -R /run/lock/apache2 /run/apache2 /var/log/apache2 /var/cache/apache2/ /data
 ENV APACHE_RUN_USER run-user
 ENV APACHE_RUN_GROUP run-user
