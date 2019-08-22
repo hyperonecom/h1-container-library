@@ -9,7 +9,7 @@ const path = require('path');
 
 const ignoredDirectory = [
     'content',
-    'node_modules'
+    'node_modules',
 ];
 
 const repos = ['h1cr.io/website'];
@@ -53,7 +53,13 @@ const main = async () => {
         if (!s.isDirectory()) {
             continue;
         }
-        const config = require(await path.join(repositoryDir, 'tags'));
+        let config;
+        try{
+        config = require(await path.join(repositoryDir, 'tags'));
+        }catch(err){
+            console.log(`Skip '${repositoryDir}' due missing / invalid tags`)
+            continue;
+        }
         for (const tag of Object.keys(config)) {
 
             let testEnabled = true;
