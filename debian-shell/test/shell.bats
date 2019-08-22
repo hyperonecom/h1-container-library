@@ -14,3 +14,8 @@
 	run docker run --rm "$IMAGE" unzip -v
   [ "$status" -eq 0 ]
 }
+
+@test "zip available" {
+	run docker run --rm "$IMAGE" zip -v
+  [ "$status" -eq 0 ]
+}

@@ -15,25 +15,37 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
   php56:
     image: h1cr.io/website/php-apache:5.6
+    read_only: true
     build:
       context: php-apache/5.6
     labels:
       - "traefik.frontend.rule=Host:php56.127.0.0.1.xip.io"
+      - "traefik.port=8080"
     volumes:
-      - ./content/:/data/public
+      - ./content/:/data/
+      - ./content/tmp:/tmp
+      - ./content/var/run:/var/run
   php72:
     image: h1cr.io/website/php-apache:7.2
+    read_only: true
     build:
       context: php-apache/7.2
     labels:
       - "traefik.frontend.rule=Host:php72.127.0.0.1.xip.io"
+      - "traefik.port=8080"
     volumes:
-      - ./content/:/data/public
+      - ./content/:/data/
+      - ./content/tmp:/tmp
+      - ./content/var/run:/var/run
   nginx:
     image: h1cr.io/website/nginx-static:latest
+    read_only: true
     build:
       context: nginx-static/latest
     labels:
       - "traefik.frontend.rule=Host:nginx.127.0.0.1.xip.io"
+      - "traefik.port=8080"
     volumes:
-      - ./content/:/data/public
+      - ./content/:/data/
+      - ./content/tmp:/tmp
+      - ./content/var/run:/var/run
