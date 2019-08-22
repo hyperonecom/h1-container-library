@@ -1,7 +1,7 @@
 FROM debian:latest
 LABEL maintainer="HyperOne"
 RUN apt-get update \
-&& apt-get install -y --no-install-recommends ca-certificates rsync curl unzip wget nano mc vim mariadb-client openssh-sftp-server subversion locales \
+&& apt-get install -y --no-install-recommends ca-certificates rsync curl zip unzip wget nano mc vim mariadb-client openssh-sftp-server subversion locales \
 && rm -rf /var/lib/apt/lists/*
 RUN curl -s -L "https://github.com/hyperonecom/h1-cli/releases/latest/download/h1-linux" -o /usr/local/bin/h1 \
 && chmod +x /usr/local/bin/h1
