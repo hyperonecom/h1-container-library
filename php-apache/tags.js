@@ -20,7 +20,7 @@ module.exports = {
       "WP_CLI_VERSION": "2.1.0",
       "IMAGICK_VERSION": "3.4.4",
     }
-  }
+  },
   "7.3": {
     "args": {
       "PHP_VERSION": "7.3",

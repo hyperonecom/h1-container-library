@@ -2,9 +2,9 @@ FROM chialab/php:7.3-apache
 LABEL maintainer="HyperOne"
 LABEL rbx.shell_image="h1cr.io/website/php-apache-shell:7.3"
 ENV IMAGICK_VERSION="3.4.4"
-RUN sed -i 's@DocumentRoot .*@DocumentRoot /data/public@g' /etc/apache2/sites-available/000-default.conf && \
-sed -i 's@Directory /var/www/@Directory /data/public@g' /etc/apache2/conf-available/docker-php.conf /etc/apache2/apache2.conf
-RUN echo "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_$(uname -m | sed 's/_/-/g').tar.gz"
+COPY ./site.conf /etc/apache2/sites-available/000-default.conf
+COPY ./ports.conf /etc/apache2/ports.conf
+RUN sed -i 's@Directory /var/www/@Directory /data/public@g' /etc/apache2/conf-available/docker-php.conf /etc/apache2/apache2.conf
 RUN curl "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_$(uname -m | sed 's/_/-/g').tar.gz" -s -o /tmp/ioncube.tar.gz \
 && extension_dir=$(php -i | sed -n -E '/extension_dir/s/^extension_dir.+?=> (.+?)/\1/gp') \
 && tar -xzvf /tmp/ioncube.tar.gz --strip-components=1 -C "$extension_dir" "ioncube/ioncube_loader_lin_7.3.so" \

@@ -3,7 +3,7 @@ LABEL maintainer="HyperOne"
 ENV WP_CLI_VERSION="2.1.0"
 RUN fetchDeps="gnupg lsb-release" \
 && apt-get update \
-&& apt-get install -y --no-install-recommends $fetchDeps rsync wget nano mc vim mariadb-client unzip openssh-sftp-server subversion locales \
+&& apt-get install -y --no-install-recommends $fetchDeps rsync wget nano mc vim mariadb-client zip unzip openssh-sftp-server subversion locales \
 && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
 && echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -c -s)-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
 && apt-get update \
