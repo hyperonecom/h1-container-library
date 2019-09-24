@@ -5,7 +5,7 @@
 	random_port=$((((RANDOM + RANDOM) % 63001) + 2000))
     cp "${BATS_TEST_DIRNAME}/app.js" "${tmp_dir}/app.js"
 	chmod -o+rx "$tmp_dir";
-	container_id=$(docker run --rm -d -v "${tmp_dir}:/data/public" -p "$random_port:8080" "$IMAGE");
+	container_id=$(docker run --rm -d -v "${tmp_dir}:/data/" -p "$random_port:8080" "$IMAGE");
 	sleep 3
 	run curl "localhost:$random_port/"
 	[ "$status" -eq 0 ]

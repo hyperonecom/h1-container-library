@@ -2,9 +2,16 @@ FROM debian:latest
 LABEL maintainer="HyperOne"
 RUN apt-get update \
 && apt-get install -y --no-install-recommends ca-certificates rsync curl zip unzip wget nano mc vim mariadb-client openssh-sftp-server subversion locales \
+&& VERSION_CODENAME=$(sed -E -n 's/VERSION=.*\((.+?)\).*$/\1/gp' /etc/os-release) \
+&& fetchDeps="gnupg" \
+&& apt-get update \
+&& apt-get install -y --no-install-recommends ${fetchDeps} \
+&& curl -fsSL "http://packages.hyperone.cloud/gpg.public.txt" | apt-key add - \
+&& echo "deb [arch=amd64] http://packages.hyperone.cloud/linux/debian/ $VERSION_CODENAME stable" > /etc/apt/sources.list.d/hyperone.list \
+&& apt-get update \
+&& apt-get install -y --no-install-recommends h1-cli \
+&& apt-get remove -y ${fetchDeps} \
 && rm -rf /var/lib/apt/lists/*
-RUN curl -s -L "https://github.com/hyperonecom/h1-cli/releases/latest/download/h1-linux" -o /usr/local/bin/h1 \
-&& chmod +x /usr/local/bin/h1
 RUN ln -s /usr/lib/openssh/sftp-server /usr/bin/sftp-server
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
 && dpkg-reconfigure --frontend=noninteractive locales \
