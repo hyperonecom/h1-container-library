@@ -27,11 +27,11 @@ Wykorzystywana jest następująca struktura katalogów:
 
 ### Interpreter PHP
 
-Interpreter PHP jest odpowiedzialny za przyjęcie współprace z Apache 2 w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą jezyka PHP.
+Interpreter PHP jest odpowiedzialny za współprace z Apache 2 w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą języka PHP.
 
 Środowisko udostępnia najnowszą stabilną wersji PHP %%PHP_VERSION%%. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać PHP %%PHP_VERSION%%.12, a później zostać zaktualizowane do PHP %%PHP_VERSION%%.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głownego.
+Na przykład środowisko może zawierać PHP %%PHP_VERSION%%.12, a później zostać zaktualizowane do PHP %%PHP_VERSION%%.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
 
 #### Konfiguracja
 
