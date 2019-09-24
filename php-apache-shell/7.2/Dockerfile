@@ -10,7 +10,7 @@ RUN fetchDeps="gnupg lsb-release" \
 && echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -c -s)-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
 && echo "deb [arch=amd64] http://packages.hyperone.cloud/linux/debian/ $VERSION_CODENAME stable" > /etc/apt/sources.list.d/hyperone.list \
 && apt-get update \
-&& apt-get install -y --no-install-recommends postgresql-client-10 \
+&& apt-get install -y --no-install-recommends h1-cli postgresql-client-10 \
 && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $fetchDeps \
 && rm -rf /var/lib/apt/lists/*
 RUN curl -s -L "https://github.com/wp-cli/wp-cli/releases/download/v${WP_CLI_VERSION}/wp-cli-${WP_CLI_VERSION}.phar" -o /usr/local/bin/wp \
