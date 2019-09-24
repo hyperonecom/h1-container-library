@@ -18,5 +18,6 @@ ENV LC_ALL en_US.UTF-8
 RUN adduser --uid 23456 --disabled-password --gecos "" --home /data run-user && chown run-user:run-user -R /data
 USER run-user
 WORKDIR /data
+ENV NODE_VERSION 10
 ENV PORT 8080
-CMD ["node", "public/app.js"]
+CMD ["node", "app"]

@@ -1,8 +1,8 @@
-# Node %%NODE_VERSION%%
+# Node 12
 
 ## Kluczowe funkcjonalności
 
-* Dostęp do NodeJS w wersji %%NODE_VERSION%%
+* Dostęp do NodeJS w wersji 12
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa HTTP i WebSocket
 
@@ -18,15 +18,15 @@ Wykorzystywana jest następująca struktura katalogów:
 
 Środowisko udostępnia następujące oprogramowanie:
 
-* NodeJS %%NODE_VERSION%%
+* NodeJS 12
 
 ### Interpreter NodeJS
 
-Interpreter NodeJS jest odpowiedzialny za obsługę przychodzącego żądania i udzielenia  w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą język PHP.
+Interpreter NodeJS jest odpowiedzialny za obsługę przychodzącego żądania i udzielenia  w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą język 1212.
 
-Środowisko udostępnia najnowszą stabilną wersji NodeJS %%NODE_VERSION%%. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
+Środowisko udostępnia najnowszą stabilną wersji NodeJS 12. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać NodeJS %%PHP_VERSION%%.1.1, a później zostać zaktualizowane do PHP %%PHP_VERSION%%.2.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
+Na przykład środowisko może zawierać NodeJS 12.1.1, a później zostać zaktualizowane do NodeJS 12.2.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
 
 #### Nagłówki żądąnia
 
@@ -45,9 +45,10 @@ Informacje na temat pracy interpretera NodeJS są domyślnie wyświetlane i reje
 
 Następujące zmienne środowiskowe są ustawione w środowisku:
 
-| Zmienna środowiskowa  | Opis
-| --------------------- | -------
-| ```NODE_VERSION```    | Dostepna wersja interpretera NodeJS |
+| Zmienna środowiskowa |                 Opis                  |
+| -------------------- | ------------------------------------- |
+| ```NODE_VERSION```   | Dostępna wersja interpretera NodeJS   |
+| ```PORT```           | Wymagany port nasłuchiwania aplikacji |
 
 ## Powłoka
 

@@ -20,4 +20,4 @@ USER run-user
 WORKDIR /data
 ENV NODE_VERSION %%NODE_VERSION%%
 ENV PORT 8080
-CMD ["node", "public/app.js"]
+CMD ["node", "app"]
