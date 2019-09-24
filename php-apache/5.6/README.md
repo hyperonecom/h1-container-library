@@ -27,11 +27,11 @@ Wykorzystywana jest następująca struktura katalogów:
 
 ### Interpreter PHP
 
-Interpreter PHP jest odpowiedzialny za przyjęcie współprace z Apache 2 w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą jezyka PHP.
+Interpreter PHP jest odpowiedzialny za współprace z Apache 2 w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą języka PHP.
 
 Środowisko udostępnia najnowszą stabilną wersji PHP 5.6. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać PHP 5.6.12, a później zostać zaktualizowane do PHP 5.6.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głownego.
+Na przykład środowisko może zawierać PHP 5.6.12, a później zostać zaktualizowane do PHP 5.6.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
 
 #### Konfiguracja
 
@@ -39,8 +39,8 @@ Aktywne są następujące moduły interpretera PHP: ```bcmath bz2 calendar exif 
 
 Wykorzystywane są domyślne parametry PHP.ini z wykluczeniem następujących:
 
-| Parametr                   | Wartość    | 
-| ---------------------------| -----------|
+|         Parametr          |  Wartość   |
+| ------------------------- | ---------- |
 | ```upload_max_filesize``` | ```128M``` |
 | ```post_max_size```       | ```128M``` |
 
@@ -48,7 +48,7 @@ Możliwa jest samodzielny wpływ na konfiguracje PHP z wykorzystaniem ```/data/e
 
 Przykładowo w celu ograniczenia wyświetlania błędów oraz rejestrowania ich do ogólnego dziennika usługi *Strona* można utworzyć plik w ścieżce ```/data/etc/php/cron.d/custom.ini```:
 
-```
+```ini
 error_reporting = E_ALL
 display_errors = Off
 display_startup_errors = Off
@@ -83,11 +83,11 @@ Informacje na temat pracy serwera Apache2 są rejestrowanego do ogólnego dzienn
 
 Następujące zmienne środowiskowe są ustawione w środowisku:
 
-| Zmienna środowiskowa  | Opis
-| --------------------- | -------
+| Zmienna środowiskowa  |                Opis                |
+| --------------------- | ---------------------------------- |
 | ```IMAGICK_VERSION``` | Dostepna wersja biblioteki Imagick |
-| ```PHP_VERSION```     | Dostepna wersja interpretera PHP |
-| ```WP_CLI```          | Dostepna wersja narzedzia WP-CLI|
+| ```PHP_VERSION```     | Dostepna wersja interpretera PHP   |
+| ```WP_CLI```          | Dostepna wersja narzedzia WP-CLI   |
 
 ## Powłoka
 
