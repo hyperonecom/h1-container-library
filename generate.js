@@ -77,7 +77,7 @@ const main = async () => {
                 buildContent.push(`docker build -t ${imageName} ${file}/${tag}`);
                 deployContent.push(`docker push ${imageName}`);
                 if (index === 0 && testEnabled) {
-                    testContent.push(`IMAGE="${imageName}" bats ${file}/test/*`);
+                    testContent.push(`IMAGE="${imageName}" bats ${file}/test/*.bats`);
                 }
             });
         }
