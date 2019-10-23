@@ -18,6 +18,16 @@ Wykorzystywana jest następująca struktura katalogów:
 * ```/data/public``` - katalog zawierający dane udostępniane przez Apache2
 * ```/data/etc/php/conf.d``` - katalog, który może zawierać pliki wykorzystujące dowolne dyrektywy [PHP.ini](https://www.php.net/manual/en/ini.list.php)
 
+## Użycie
+
+Środowisko wykonawcze może zostać wykorzystane w ramach usługi *Strona*.
+
+W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
+
+```%%IMAGE_NAME%%```
+
+Kod aplikacji należy umieścić w ścieżce ```public```.
+
 ## Oprogramowanie
 
 Środowisko udostępnia następujące oprogramowanie:

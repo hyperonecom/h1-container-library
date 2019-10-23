@@ -12,6 +12,23 @@ Wykorzystywana jest następująca struktura katalogów:
 * ```/data/public``` - katalog zawierający dane udostępniane przez Nginx
 * ```/data/etc/nginx/nginx.conf``` - plik, który po utworzeniu zostanie użyty jako konfiguracja Nginx
 
+## Użycie
+
+Środowisko wykonawcze może zostać wykorzystane:
+
+* w ramach usługi *Strona*
+* w oprogramowaniu Docker
+
+W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
+
+```%%IMAGE_NAME%%```
+
+W celu użycia z wykorzystaniem Docker należy wykorzystać następujące polecenie:
+
+```bash
+docker run -p 8080:8080 -e PORT=8080 -v $(PWD):/data %%IMAGE_NAME%%
+```
+
 ## Oprogramowanie
 
 Środowisko udostępnia następujące oprogramowanie:

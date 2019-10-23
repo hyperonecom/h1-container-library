@@ -14,6 +14,16 @@ Wykorzystywana jest następująca struktura katalogów:
 * ```/data/public``` - katalog zawierający aplikacje
 * ```/data/public/app.js``` - plik startowy aplikacji NodeJS
 
+## Użycie
+
+Środowisko wykonawcze może zostać wykorzystane w ramach usługi *Strona*.
+
+W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
+
+```h1cr.io/website/node:12```
+
+Kod aplikacji należy umieścić w ścieżce ```app```, a punkt startowy w ```app/index.js```
+
 ## Oprogramowanie
 
 Środowisko udostępnia następujące oprogramowanie:

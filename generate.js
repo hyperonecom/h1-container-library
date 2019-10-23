@@ -12,14 +12,14 @@ const ignoredDirectory = [
     'node_modules',
 ];
 
-const repos = ['h1cr.io/website'];
+const repo = 'h1cr.io/website';
 
 async function saveTemplated(sourceFile, context, outputFile) {
-    let content = await readFile(sourceFile, {encoding: 'utf-8'});
+    let content = await readFile(sourceFile, { encoding: 'utf-8' });
     for (const [key, value] of Object.entries(context)) {
         content = content.replace(new RegExp(`%%${key}%%`, 'g'), value);
     }
-    await writeFile(outputFile, content, {encoding: 'utf-8'},);
+    await writeFile(outputFile, content, { encoding: 'utf-8' });
     console.log(`Saved templated '${sourceFile}' into '${outputFile}'`)
 }
 
@@ -54,9 +54,9 @@ const main = async () => {
             continue;
         }
         let config;
-        try{
-        config = require(await path.join(repositoryDir, 'tags'));
-        }catch(err){
+        try {
+            config = require(await path.join(repositoryDir, 'tags'));
+        } catch (err) {
             console.log(`Skip '${repositoryDir}' due missing / invalid tags`)
             continue;
         }
@@ -68,18 +68,23 @@ const main = async () => {
             });
             const source = path.join(repositoryDir, 'base');
             const output = path.join(repositoryDir, tag);
+            const tagConfig = config[tag].args || {};
+            const imageName = `${repo}/${file}:${tag}`;
+
+            const imageConfig = {
+                IMAGE_NAME: imageName
+            };
+
             await stat(path.join(output, '.skip_base')).catch(err => {
                 if (err.code !== 'ENOENT') throw err;
-                return generateImage(source, output, config[tag].args || {});
+                return generateImage(source, output, { ...imageConfig, ...tagConfig });
             });
-            repos.forEach((name, index) => {
-                const imageName = `${name}/${file}:${tag}`;
-                buildContent.push(`docker build -t ${imageName} ${file}/${tag}`);
-                deployContent.push(`docker push ${imageName}`);
-                if (index === 0 && testEnabled) {
-                    testContent.push(`IMAGE="${imageName}" bats ${file}/test/*.bats`);
-                }
-            });
+
+            buildContent.push(`docker build -t ${imageName} ${file}/${tag}`);
+            deployContent.push(`docker push ${imageName}`);
+            if (testEnabled) {
+                testContent.push(`IMAGE="${imageName}" bats ${file}/test/*.bats`);
+            }
         }
     }
     await writeFile(path.join(__dirname, 'build.sh'), buildContent.join("\n"));
