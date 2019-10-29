@@ -78,9 +78,3 @@ W interaktywnej jest dostępne m. in. następujące oprogramowanie:
 * wget
 * wp-cli
 * zip
-
-## Często zadawane pytania
-
-### W jaki sposób mogę wysłać e-mail?
-
-W celu wysyłki wiadomości e-mail należy wykorzystać zewnętrzny serwer SMTP wraz z np. [biblioteką PHPMailer](https://github.com/PHPMailer/PHPMailer), wtyczką Wordpress [WP Mail SMTP by WPForms](https://wordpress.org/plugins/wp-mail-smtp/). Funkcja ```mail()``` nie jest dostępna.
