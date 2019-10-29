@@ -12,7 +12,7 @@ Wykorzystywana jest następująca struktura katalogów:
 
 * ```/data/.zfs``` - dostęp (wyłącznie do odczytu) utworzonych migawek
 * ```/data/public``` - katalog zawierający aplikacje
-* ```/data/public/app.js``` - plik startowy aplikacji NodeJS
+* ```/data/app/index.js``` - plik startowy aplikacji NodeJS
 
 ## Użycie
 
