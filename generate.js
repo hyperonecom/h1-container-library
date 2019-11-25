@@ -81,8 +81,8 @@ const main = async () => {
                 if (err.code !== 'ENOENT') throw err;
                 return generateImage(source, output, { ...imageConfig, ...tagConfig });
             });
-
-            buildContent.push(`docker build -t ${imageName} ${file}/${tag}`);
+            buildContent.push(`docker pull ${imageName} || echo 'Fail to pull ${imageName}'`);
+            buildContent.push(`docker build --cache-from ${imageName} -t ${imageName} ${file}/${tag}`);
             deployContent.push(`docker push ${imageName}`);
             if (testEnabled) {
                 testContent.push(`IMAGE="${imageName}" bats ${file}/test/*.bats`);
