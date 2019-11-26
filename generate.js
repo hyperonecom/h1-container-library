@@ -33,6 +33,7 @@ const generateImage = async (source, output, context) => {
         const outputFile = path.join(output, file);
         const s = await stat(sourceFile);
         if (s.isDirectory()) {
+            await generateImage(sourceFile, outputFile, context);
             continue;
         }
         await saveTemplated(sourceFile, context, outputFile);
@@ -53,13 +54,14 @@ const main = async () => {
         if (!s.isDirectory()) {
             continue;
         }
-        let config;
-        try {
-            config = require(await path.join(repositoryDir, 'tags'));
-        } catch (err) {
-            console.log(`Skip '${repositoryDir}' due missing / invalid tags`)
+        const sourceDir = path.join(repositoryDir, 'base');
+        try{
+            await stat(sourceDir);
+        }catch{
+            console.log(`Unable to access ${sourceDir}. Skip file`);
             continue;
         }
+        const config = require(await path.join(repositoryDir, 'tags'));
         for (const tag of Object.keys(config)) {
 
             let testEnabled = true;
@@ -79,8 +81,8 @@ const main = async () => {
                 if (err.code !== 'ENOENT') throw err;
                 return generateImage(source, output, { ...imageConfig, ...tagConfig });
             });
-
-            buildContent.push(`docker build -t ${imageName} ${file}/${tag}`);
+            buildContent.push(`docker pull ${imageName} || echo 'Fail to pull ${imageName}'`);
+            buildContent.push(`docker build --cache-from ${imageName} -t ${imageName} ${file}/${tag}`);
             deployContent.push(`docker push ${imageName}`);
             if (testEnabled) {
                 testContent.push(`IMAGE="${imageName}" bats ${file}/test/*.bats`);

@@ -101,7 +101,7 @@ Następujące zmienne środowiskowe są ustawione w środowisku:
 
 ## Powłoka
 
-W interaktywnej jest dostępne m. in. następujące oprogramowanie:
+W interaktywnej konsoli jest dostępne m. in. następujące oprogramowanie:
 
 * composer
 * curl
