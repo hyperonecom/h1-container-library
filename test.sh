@@ -12,3 +12,4 @@ IMAGE="h1cr.io/website/php-apache:7.3" bats php-apache/test/*.bats
 IMAGE="h1cr.io/website/php-apache-shell:5.6" bats php-apache-shell/test/*.bats
 IMAGE="h1cr.io/website/php-apache-shell:7.2" bats php-apache-shell/test/*.bats
 IMAGE="h1cr.io/website/php-apache-shell:7.3" bats php-apache-shell/test/*.bats
+IMAGE="h1cr.io/website/python-passenger:3.7" bats python-passenger/test/*.bats
