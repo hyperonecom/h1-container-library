@@ -9,8 +9,8 @@
 	sleep 3
 	run curl "localhost:$random_port/content.txt"
 	[ "$status" -eq 0 ]
-  [[ "$output" == *"61ecbc41cdae3e6b32712a06c73606fa"* ]]
-  docker container stop $container_id;
+	[[ "$output" == *"61ecbc41cdae3e6b32712a06c73606fa"* ]]
+	docker container stop $container_id;
 }
 
 @test "page load on readonly fs" {
