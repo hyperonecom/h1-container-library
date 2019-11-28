@@ -1,8 +1,8 @@
-# Python %%PYTHON_VERSION%%
+# Python %%PY_VERSION%%
 
 ## Kluczowe funkcjonalności
 
-* Dostęp do Python w wersji %%PYTHON_VERSION%%
+* Dostęp do Python w wersji %%PY_VERSION%%
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa HTTP i WebSocket
 
@@ -30,16 +30,16 @@ Kod aplikacji należy umieścić w ścieżce ```app```, a plik startowy w ```app
 
 Środowisko udostępnia następujące oprogramowanie:
 
-* Python %%PYTHON_VERSION%%
+* Python %%PY_VERSION%%
 * Nginx wraz z modułem mod_passenger
 
 ### Interpreter Python
 
 Interpreter Python jest odpowiedzialny za obsługę przychodzącego żądania w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą języka Python.
+3
+Środowisko udostępnia najnowszą stabilną wersji Python %%PY_VERSION%%. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Środowisko udostępnia najnowszą stabilną wersji Python %%PYTHON_VERSION%%. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
-
-Na przykład środowisko może zawierać Python %%PYTHON_VERSION%%.1, a później zostać zaktualizowane do Python %%PYTHON_VERSION%%.15, ale nie będzie automatycznie aktualizowane do wyższego wydania rzędu wskazanego w nazwie obrazu.
+Na przykład środowisko może zawierać Python %%PY_VERSION%%.1, a później zostać zaktualizowane do Python %%PY_VERSION%%.15, ale nie będzie automatycznie aktualizowane do wyższego wydania rzędu wskazanego w nazwie obrazu.
 
 #### Konfiguracja
 
@@ -78,7 +78,7 @@ Następujące zmienne środowiskowe są ustawione w środowisku:
 
 | Zmienna środowiskowa |                 Opis                  |
 | -------------------- | ------------------------------------- |
-| ```PYTHON_VERSION``` | Dostępna wersja interpretera Python   |
+| ```PY_VERSION``` | Dostępna wersja interpretera Python   |
 | ```PORT```           | Wymagany port nasłuchiwania aplikacji |
 
 ## Powłoka
