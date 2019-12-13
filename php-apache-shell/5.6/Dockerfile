@@ -4,7 +4,7 @@ ENV WP_CLI_VERSION="2.1.0"
 RUN fetchDeps="gnupg lsb-release" \
 && VERSION_CODENAME=$(sed -E -n 's/VERSION=.*\((.+?)\).*$/\1/gp' /etc/os-release) \
 && apt-get update \
-&& apt-get install -y --no-install-recommends $fetchDeps rsync wget nano mc vim mariadb-client zip unzip openssh-sftp-server subversion locales \
+&& apt-get install -y --no-install-recommends $fetchDeps git less rsync wget nano mc vim mariadb-client zip unzip openssh-sftp-server subversion locales \
 && curl -fsSL "https://www.postgresql.org/media/keys/ACCC4CF8.asc" | apt-key add - \
 && curl -fsSL "http://packages.hyperone.cloud/gpg.public.txt" | apt-key add - \
 && echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -c -s)-pgdg main" > /etc/apt/sources.list.d/pgdg.list \

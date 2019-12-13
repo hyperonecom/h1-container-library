@@ -93,6 +93,8 @@ W interaktywnej konsoli jest dostępne m. in. następujące oprogramowanie:
 * nano
 * postgresql-client
 * rsync
+* less
+* git
 * subversion
 * unzip
 * vim

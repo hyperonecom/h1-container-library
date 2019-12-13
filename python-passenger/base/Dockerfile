@@ -4,7 +4,7 @@ LABEL rbx.shell_cmd="/bin/bash"
 WORKDIR /data
 # Install standard tools
 RUN apt-get update \
-&& apt-get install -y --no-install-recommends ca-certificates rsync curl zip unzip wget nano mc vim mariadb-client openssh-sftp-server subversion locales \
+&& apt-get install -y --no-install-recommends ca-certificates git less rsync curl zip unzip wget nano mc vim mariadb-client openssh-sftp-server subversion locales \
 && VERSION_CODENAME=$(sed -E -n 's/VERSION=.*\((.+?)\).*$/\1/gp' /etc/os-release) \
 && fetchDeps="gnupg" \
 && apt-get update \
