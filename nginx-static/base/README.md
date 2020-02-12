@@ -21,12 +21,12 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```%%IMAGE_NAME%%```
+```{{IMAGE_NAME}}```
 
 W celu użycia z wykorzystaniem Docker należy wykorzystać następujące polecenie:
 
 ```bash
-docker run -p 8080:8080 -e PORT=8080 -v $(PWD):/data %%IMAGE_NAME%%
+docker run -p 8080:8080 -e PORT=8080 -v $(PWD):/data {{IMAGE_NAME}}
 ```
 
 ## Oprogramowanie

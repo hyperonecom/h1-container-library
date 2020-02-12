@@ -1,4 +1,4 @@
-FROM node:%%NODE_VERSION%%
+FROM node:{{NODE_VERSION}}
 LABEL maintainer="HyperOne"
 LABEL rbx.shell_cmd="/bin/bash"
 RUN apt-get update \
@@ -23,6 +23,6 @@ ENV LC_ALL en_US.UTF-8
 RUN adduser --uid 23456 --disabled-password --gecos "" --home /data run-user && chown run-user:run-user -R /data
 USER run-user
 WORKDIR /data
-ENV NODE_VERSION %%NODE_VERSION%%
+ENV NODE_VERSION {{NODE_VERSION}}
 ENV PORT 8080
 CMD ["node", "app"]

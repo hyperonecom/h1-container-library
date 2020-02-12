@@ -1,14 +1,15 @@
-# PHP-Apache %%PHP_VERSION%%
+# PHP-Apache {{PHP_VERSION}}
 
 ## Kluczowe funkcjonalności
 
-* Dostęp do PHP w wersji %%PHP_VERSION%%
+* Dostęp do PHP w wersji {{PHP_VERSION}}
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa .htaccess
 * Obsługa mod_rewrite (przyjazne URL)
+* Dostęp do WP-CLI w wersji {{WP_CLI_VERSION}}
 * Własne strony błędów
 * Możliwość zabezpieczenia stron i katalogów hasłem
-* Umożliwia uruchomienie aplikacji zakodowanych z pomocą IonCube Loader
+{{#IONCUBE}}* Umożliwia uruchomienie aplikacji zakodowanych z pomocą IonCube Loader{{/IONCUBE}}
 
 ## Struktura katalogów
 
@@ -24,7 +25,7 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```%%IMAGE_NAME%%```
+```{{IMAGE_NAME}}```
 
 Kod aplikacji należy umieścić w ścieżce ```public```.
 
@@ -39,13 +40,13 @@ Kod aplikacji należy umieścić w ścieżce ```public```.
 
 Interpreter PHP jest odpowiedzialny za współprace z Apache 2 w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą języka PHP.
 
-Środowisko udostępnia najnowszą stabilną wersji PHP %%PHP_VERSION%%. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
+Środowisko udostępnia najnowszą stabilną wersji PHP {{PHP_VERSION}}. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać PHP %%PHP_VERSION%%.12, a później zostać zaktualizowane do PHP %%PHP_VERSION%%.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
+Na przykład środowisko może zawierać PHP {{PHP_VERSION}}.12, a później zostać zaktualizowane do PHP {{PHP_VERSION}}.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
 
 #### Konfiguracja
 
-Aktywne są następujące moduły interpretera PHP: ```%%MODULES%%```.
+Aktywne są następujące moduły interpretera PHP: ```{{MODULES}}```.
 
 Wykorzystywane są domyślne parametry PHP.ini z wykluczeniem następujących:
 

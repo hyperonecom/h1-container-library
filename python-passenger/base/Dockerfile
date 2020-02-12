@@ -1,4 +1,4 @@
-FROM python:%%PY_VERSION%%-slim
+FROM python:{{PY_VERSION}}-slim
 LABEL maintainer="HyperOne"
 LABEL rbx.shell_cmd="/bin/bash"
 WORKDIR /data

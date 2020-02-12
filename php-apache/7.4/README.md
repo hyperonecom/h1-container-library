@@ -1,15 +1,15 @@
-# PHP-Apache 7.3
+# PHP-Apache 7.4
 
 ## Kluczowe funkcjonalności
 
-* Dostęp do PHP w wersji 7.3
+* Dostęp do PHP w wersji 7.4
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa .htaccess
 * Obsługa mod_rewrite (przyjazne URL)
 * Dostęp do WP-CLI w wersji 2.4.0
 * Własne strony błędów
 * Możliwość zabezpieczenia stron i katalogów hasłem
-* Umożliwia uruchomienie aplikacji zakodowanych z pomocą IonCube Loader
+
 
 ## Struktura katalogów
 
@@ -25,7 +25,7 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```h1cr.io/website/php-apache:7.3```
+```h1cr.io/website/php-apache:7.4```
 
 Kod aplikacji należy umieścić w ścieżce ```public```.
 
@@ -40,13 +40,13 @@ Kod aplikacji należy umieścić w ścieżce ```public```.
 
 Interpreter PHP jest odpowiedzialny za współprace z Apache 2 w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą języka PHP.
 
-Środowisko udostępnia najnowszą stabilną wersji PHP 7.3. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
+Środowisko udostępnia najnowszą stabilną wersji PHP 7.4. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać PHP 7.3.12, a później zostać zaktualizowane do PHP 7.3.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
+Na przykład środowisko może zawierać PHP 7.4.12, a później zostać zaktualizowane do PHP 7.4.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
 
 #### Konfiguracja
 
-Aktywne są następujące moduły interpretera PHP: ```bcmath bz2 calendar exif gd iconv intl ioncube ldap mbstring mcrypt memcached mysql mysql mysqli opcache pdo_mysql pdo_pgsql pgsql redis soap zip```.
+Aktywne są następujące moduły interpretera PHP: ```bcmath bz2 calendar exif gd iconv intl ldap mbstring mcrypt memcached mysql mysql mysqli opcache pdo_mysql pdo_pgsql pgsql redis soap zip```.
 
 Wykorzystywane są domyślne parametry PHP.ini z wykluczeniem następujących:
 

@@ -1,8 +1,8 @@
-# Python %%PY_VERSION%%
+# Python {{PY_VERSION}}
 
 ## Kluczowe funkcjonalności
 
-* Dostęp do Python w wersji %%PY_VERSION%%
+* Dostęp do Python w wersji {{PY_VERSION}}
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa HTTP i WebSocket
 
@@ -12,7 +12,7 @@ Wykorzystywana jest następująca struktura katalogów:
 
 * ```/data/.zfs``` - dostęp (wyłącznie do odczytu) utworzonych migawek
 * ```/data/public``` - katalog zawierający aplikacje
-* ```/data/public/app/passenger_wsgi.py``` - plik startowy aplikacji WSGI
+* ```/data/app/passenger_wsgi.py``` - plik startowy aplikacji WSGI
 * ```/data/env/bin/python``` - ścieżka opcjonalnego interpretera Python
 * ```/data/etc/nginx/nginx.conf``` - ścieżka alternatywnego pliku konfiguracyjnego Nginx
 
@@ -22,24 +22,24 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```%%IMAGE_NAME%%```
+```{{IMAGE_NAME}}```
 
-Kod aplikacji należy umieścić w ścieżce ```app```, a plik startowy w ```app/passenger_wsgi.py```
+Kod aplikacji rekomendujemy umieścić w ścieżce ```app```, a plik startowy należy umieścić w ```app/passenger_wsgi.py```
 
 ## Oprogramowanie
 
 Środowisko udostępnia następujące oprogramowanie:
 
-* Python %%PY_VERSION%%
+* Python {{PY_VERSION}}
 * Nginx wraz z modułem mod_passenger
 
 ### Interpreter Python
 
 Interpreter Python jest odpowiedzialny za obsługę przychodzącego żądania w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą języka Python.
 3
-Środowisko udostępnia najnowszą stabilną wersji Python %%PY_VERSION%%. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
+Środowisko udostępnia najnowszą stabilną wersji Python {{PY_VERSION}}. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać Python %%PY_VERSION%%.1, a później zostać zaktualizowane do Python %%PY_VERSION%%.15, ale nie będzie automatycznie aktualizowane do wyższego wydania rzędu wskazanego w nazwie obrazu.
+Na przykład środowisko może zawierać Python {{PY_VERSION}}.1, a później zostać zaktualizowane do Python {{PY_VERSION}}.15, ale nie będzie automatycznie aktualizowane do wyższego wydania rzędu wskazanego w nazwie obrazu.
 
 #### Konfiguracja
 
@@ -99,5 +99,4 @@ W interaktywnej konsoli jest dostępne m. in. następujące oprogramowanie:
 * unzip
 * vim
 * wget
-* wp-cli
 * zip

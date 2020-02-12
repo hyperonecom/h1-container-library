@@ -12,7 +12,7 @@ Wykorzystywana jest następująca struktura katalogów:
 
 * ```/data/.zfs``` - dostęp (wyłącznie do odczytu) utworzonych migawek
 * ```/data/public``` - katalog zawierający aplikacje
-* ```/data/public/app/passenger_wsgi.py``` - plik startowy aplikacji WSGI
+* ```/data/app/passenger_wsgi.py``` - plik startowy aplikacji WSGI
 * ```/data/env/bin/python``` - ścieżka opcjonalnego interpretera Python
 * ```/data/etc/nginx/nginx.conf``` - ścieżka alternatywnego pliku konfiguracyjnego Nginx
 
@@ -24,7 +24,7 @@ W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskaz
 
 ```h1cr.io/website/python-passenger:3.7```
 
-Kod aplikacji należy umieścić w ścieżce ```app```, a plik startowy w ```app/passenger_wsgi.py```
+Kod aplikacji rekomendujemy umieścić w ścieżce ```app```, a plik startowy należy umieścić w ```app/passenger_wsgi.py```
 
 ## Oprogramowanie
 
@@ -99,5 +99,4 @@ W interaktywnej konsoli jest dostępne m. in. następujące oprogramowanie:
 * unzip
 * vim
 * wget
-* wp-cli
 * zip

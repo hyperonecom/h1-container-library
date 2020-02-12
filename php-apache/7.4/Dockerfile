@@ -1,17 +1,10 @@
-FROM chialab/php:{{PHP_VERSION}}-apache
+FROM chialab/php:7.4-apache
 LABEL maintainer="HyperOne"
-LABEL rbx.shell_image="h1cr.io/website/php-apache-shell:{{PHP_VERSION}}"
-ENV IMAGICK_VERSION="{{IMAGICK_VERSION}}"
+LABEL rbx.shell_image="h1cr.io/website/php-apache-shell:7.4"
+ENV IMAGICK_VERSION="3.4.4"
 COPY ./site.conf /etc/apache2/sites-available/000-default.conf
 COPY ./ports.conf /etc/apache2/ports.conf
 RUN sed -i 's@Directory /var/www/@Directory /data/public@g' /etc/apache2/conf-available/docker-php.conf /etc/apache2/apache2.conf
-{{#IONCUBE}}
-RUN curl "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_$(uname -m | sed 's/_/-/g').tar.gz" -s -o /tmp/ioncube.tar.gz \
-&& extension_dir=$(php -i | sed -n -E '/extension_dir/s/^extension_dir.+?=> (.+?)/\1/gp') \
-&& tar -xzvf /tmp/ioncube.tar.gz --strip-components=1 -C "$extension_dir" "ioncube/ioncube_loader_lin_{{PHP_VERSION}}.so" \
-&& chown root:staff "$extension_dir/ioncube_loader_lin_{{PHP_VERSION}}.so" \
-&& rm /tmp/ioncube.tar.gz
-{{/IONCUBE}}
 RUN apt-get update \
 # Following command add 200 MB dependencies
 && apt-get install -y --no-install-recommends zlib1g-dev libcurl3-dev libpng-dev libmagickwand-dev locales \

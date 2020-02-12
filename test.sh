@@ -1,14 +1,16 @@
 #!/bin/sh
 set -eux
-IMAGE="h1cr.io/website/alpine-shell:latest" bats alpine-shell/test/*.bats
-IMAGE="h1cr.io/website/debian-shell:latest" bats debian-shell/test/*.bats
-IMAGE="h1cr.io/website/nginx-static:latest" bats nginx-static/test/*.bats
-IMAGE="h1cr.io/website/node:10" bats node/test/*.bats
-IMAGE="h1cr.io/website/node:12" bats node/test/*.bats
-IMAGE="h1cr.io/website/php-apache:5.6" bats php-apache/test/*.bats
-IMAGE="h1cr.io/website/php-apache:7.2" bats php-apache/test/*.bats
-IMAGE="h1cr.io/website/php-apache:7.3" bats php-apache/test/*.bats
-IMAGE="h1cr.io/website/php-apache-shell:5.6" bats php-apache-shell/test/*.bats
-IMAGE="h1cr.io/website/php-apache-shell:7.2" bats php-apache-shell/test/*.bats
-IMAGE="h1cr.io/website/php-apache-shell:7.3" bats php-apache-shell/test/*.bats
-IMAGE="h1cr.io/website/python-passenger:3.7" bats python-passenger/test/*.bats
+IMAGE="h1cr.io/website/alpine-shell:latest"  bats alpine-shell/test/*.bats
+IMAGE="h1cr.io/website/debian-shell:latest"  bats debian-shell/test/*.bats
+IMAGE="h1cr.io/website/nginx-static:latest"  bats nginx-static/test/*.bats
+IMAGE="h1cr.io/website/node:10" TEST_NODE_VERSION="10" bats node/test/*.bats
+IMAGE="h1cr.io/website/node:12" TEST_NODE_VERSION="12" bats node/test/*.bats
+IMAGE="h1cr.io/website/php-apache:5.6" TEST_PHP_VERSION="5.6" TEST_WP_CLI_VERSION="2.4.0" TEST_IMAGICK_VERSION="3.4.4" TEST_MODULES="bcmath bz2 calendar exif gd iconv intl ioncube ldap mbstring mcrypt memcached mysql mysql mysqli opcache pdo_mysql pdo_pgsql pgsql redis soap zip" TEST_IONCUBE=true bats php-apache/test/*.bats
+IMAGE="h1cr.io/website/php-apache:7.2" TEST_PHP_VERSION="7.2" TEST_MODULES="bcmath bz2 calendar exif gd iconv intl ioncube ldap mbstring mcrypt memcached mysql mysql mysqli opcache pdo_mysql pdo_pgsql pgsql redis soap zip" TEST_WP_CLI_VERSION="2.4.0" TEST_IMAGICK_VERSION="3.4.4" TEST_IONCUBE=true bats php-apache/test/*.bats
+IMAGE="h1cr.io/website/php-apache:7.3" TEST_PHP_VERSION="7.3" TEST_MODULES="bcmath bz2 calendar exif gd iconv intl ioncube ldap mbstring mcrypt memcached mysql mysql mysqli opcache pdo_mysql pdo_pgsql pgsql redis soap zip" TEST_WP_CLI_VERSION="2.4.0" TEST_IMAGICK_VERSION="3.4.4" TEST_IONCUBE=true bats php-apache/test/*.bats
+IMAGE="h1cr.io/website/php-apache:7.4" TEST_PHP_VERSION="7.4" TEST_MODULES="bcmath bz2 calendar exif gd iconv intl ldap mbstring mcrypt memcached mysql mysql mysqli opcache pdo_mysql pdo_pgsql pgsql redis soap zip" TEST_WP_CLI_VERSION="2.4.0" TEST_IMAGICK_VERSION="3.4.4" TEST_IONCUBE=false bats php-apache/test/*.bats
+IMAGE="h1cr.io/website/php-apache-shell:5.6" TEST_PHP_VERSION="5.6" TEST_WP_CLI_VERSION="2.4.0" TEST_IMAGICK_VERSION="3.4.4" TEST_MODULES="bcmath bz2 calendar exif gd iconv intl ioncube ldap mbstring mcrypt memcached mysql mysql mysqli opcache pdo_mysql pdo_pgsql pgsql redis soap zip" TEST_IONCUBE=true bats php-apache-shell/test/*.bats
+IMAGE="h1cr.io/website/php-apache-shell:7.2" TEST_PHP_VERSION="7.2" TEST_MODULES="bcmath bz2 calendar exif gd iconv intl ioncube ldap mbstring mcrypt memcached mysql mysql mysqli opcache pdo_mysql pdo_pgsql pgsql redis soap zip" TEST_WP_CLI_VERSION="2.4.0" TEST_IMAGICK_VERSION="3.4.4" TEST_IONCUBE=true bats php-apache-shell/test/*.bats
+IMAGE="h1cr.io/website/php-apache-shell:7.3" TEST_PHP_VERSION="7.3" TEST_MODULES="bcmath bz2 calendar exif gd iconv intl ioncube ldap mbstring mcrypt memcached mysql mysql mysqli opcache pdo_mysql pdo_pgsql pgsql redis soap zip" TEST_WP_CLI_VERSION="2.4.0" TEST_IMAGICK_VERSION="3.4.4" TEST_IONCUBE=true bats php-apache-shell/test/*.bats
+IMAGE="h1cr.io/website/php-apache-shell:7.4" TEST_PHP_VERSION="7.4" TEST_MODULES="bcmath bz2 calendar exif gd iconv intl ldap mbstring mcrypt memcached mysql mysql mysqli opcache pdo_mysql pdo_pgsql pgsql redis soap zip" TEST_WP_CLI_VERSION="2.4.0" TEST_IMAGICK_VERSION="3.4.4" TEST_IONCUBE=false bats php-apache-shell/test/*.bats
+IMAGE="h1cr.io/website/python-passenger:3.7" TEST_PY_VERSION="3.7" TEST_PYTHON_LIBS="libmariadbclient18 libmariadbclient-dev libffi-dev libssl-dev libjpeg-dev libpng-dev libxml2-dev libxslt1-dev libjpeg62 python3-dev build-essential" bats python-passenger/test/*.bats

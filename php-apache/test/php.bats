@@ -84,5 +84,8 @@
 
 @test "load ioncube loader" {
 	run docker run --rm "$IMAGE" php -i
+	if [ $TEST_IONCUBE == "false" ]; then
+		skip "Skipped test due environment variable: TEST_IONCUBE=false"
+	fi
 	[[ "$output" == *"with the ionCube PHP Loader"* ]]
 }

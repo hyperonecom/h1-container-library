@@ -16,11 +16,15 @@ docker pull h1cr.io/website/php-apache:7.2 || echo 'Fail to pull h1cr.io/website
 docker build --cache-from h1cr.io/website/php-apache:7.2 -t h1cr.io/website/php-apache:7.2 php-apache/7.2
 docker pull h1cr.io/website/php-apache:7.3 || echo 'Fail to pull h1cr.io/website/php-apache:7.3'
 docker build --cache-from h1cr.io/website/php-apache:7.3 -t h1cr.io/website/php-apache:7.3 php-apache/7.3
+docker pull h1cr.io/website/php-apache:7.4 || echo 'Fail to pull h1cr.io/website/php-apache:7.4'
+docker build --cache-from h1cr.io/website/php-apache:7.4 -t h1cr.io/website/php-apache:7.4 php-apache/7.4
 docker pull h1cr.io/website/php-apache-shell:5.6 || echo 'Fail to pull h1cr.io/website/php-apache-shell:5.6'
 docker build --cache-from h1cr.io/website/php-apache-shell:5.6 -t h1cr.io/website/php-apache-shell:5.6 php-apache-shell/5.6
 docker pull h1cr.io/website/php-apache-shell:7.2 || echo 'Fail to pull h1cr.io/website/php-apache-shell:7.2'
 docker build --cache-from h1cr.io/website/php-apache-shell:7.2 -t h1cr.io/website/php-apache-shell:7.2 php-apache-shell/7.2
 docker pull h1cr.io/website/php-apache-shell:7.3 || echo 'Fail to pull h1cr.io/website/php-apache-shell:7.3'
 docker build --cache-from h1cr.io/website/php-apache-shell:7.3 -t h1cr.io/website/php-apache-shell:7.3 php-apache-shell/7.3
+docker pull h1cr.io/website/php-apache-shell:7.4 || echo 'Fail to pull h1cr.io/website/php-apache-shell:7.4'
+docker build --cache-from h1cr.io/website/php-apache-shell:7.4 -t h1cr.io/website/php-apache-shell:7.4 php-apache-shell/7.4
 docker pull h1cr.io/website/python-passenger:3.7 || echo 'Fail to pull h1cr.io/website/python-passenger:3.7'
 docker build --cache-from h1cr.io/website/python-passenger:3.7 -t h1cr.io/website/python-passenger:3.7 python-passenger/3.7

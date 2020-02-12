@@ -1,8 +1,8 @@
-# Node %%NODE_VERSION%%
+# Node {{NODE_VERSION}}
 
 ## Kluczowe funkcjonalności
 
-* Dostęp do NodeJS w wersji %%NODE_VERSION%%
+* Dostęp do NodeJS w wersji {{NODE_VERSION}}
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa HTTP i WebSocket
 
@@ -20,7 +20,7 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```%%IMAGE_NAME%%```
+```{{IMAGE_NAME}}```
 
 Kod aplikacji należy umieścić w ścieżce ```app```, a punkt startowy w ```app/index.js```
 
@@ -28,15 +28,15 @@ Kod aplikacji należy umieścić w ścieżce ```app```, a punkt startowy w ```ap
 
 Środowisko udostępnia następujące oprogramowanie:
 
-* NodeJS %%NODE_VERSION%%
+* NodeJS {{NODE_VERSION}}
 
 ### Interpreter NodeJS
 
-Interpreter NodeJS jest odpowiedzialny za obsługę przychodzącego żądania i udzielenia  w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą język %%NODE_VERSION%%%%NODE_VERSION%%.
+Interpreter NodeJS jest odpowiedzialny za obsługę przychodzącego żądania i udzielenia  w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą język {{NODE_VERSION}}{{NODE_VERSION}}.
 
-Środowisko udostępnia najnowszą stabilną wersji NodeJS %%NODE_VERSION%%. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
+Środowisko udostępnia najnowszą stabilną wersji NodeJS {{NODE_VERSION}}. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać NodeJS %%NODE_VERSION%%.1.1, a później zostać zaktualizowane do NodeJS %%NODE_VERSION%%.2.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
+Na przykład środowisko może zawierać NodeJS {{NODE_VERSION}}.1.1, a później zostać zaktualizowane do NodeJS {{NODE_VERSION}}.2.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
 
 #### Nagłówki żądąnia
 

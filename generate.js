@@ -6,6 +6,9 @@ const writeFile = util.promisify(fs.writeFile);
 const mkDir = util.promisify(fs.mkdir);
 const stat = util.promisify(fs.stat);
 const path = require('path');
+const Mustache = require('mustache');
+
+Mustache.escape = function(text) {return text;};
 
 const ignoredDirectory = [
     'content',
@@ -14,11 +17,10 @@ const ignoredDirectory = [
 
 const repo = 'h1cr.io/website';
 
+
 async function saveTemplated(sourceFile, context, outputFile) {
-    let content = await readFile(sourceFile, { encoding: 'utf-8' });
-    for (const [key, value] of Object.entries(context)) {
-        content = content.replace(new RegExp(`%%${key}%%`, 'g'), value);
-    }
+    const template = await readFile(sourceFile, { encoding: 'utf-8' });
+    const content = Mustache.render(template, context);
     await writeFile(outputFile, content, { encoding: 'utf-8' });
     console.log(`Saved templated '${sourceFile}' into '${outputFile}'`)
 }
@@ -85,7 +87,8 @@ const main = async () => {
             buildContent.push(`docker build --cache-from ${imageName} -t ${imageName} ${file}/${tag}`);
             deployContent.push(`docker push ${imageName}`);
             if (testEnabled) {
-                testContent.push(`IMAGE="${imageName}" bats ${file}/test/*.bats`);
+                const env = Object.entries(tagConfig).map(([key, value]) => `TEST_${key}=${JSON.stringify(value)}`).join(" ");
+                testContent.push(`IMAGE="${imageName}" ${env} bats ${file}/test/*.bats`);
             }
         }
     }
