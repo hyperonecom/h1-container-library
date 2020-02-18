@@ -28,3 +28,5 @@ docker pull h1cr.io/website/php-apache-shell:7.4 || echo 'Fail to pull h1cr.io/w
 docker build --cache-from h1cr.io/website/php-apache-shell:7.4 -t h1cr.io/website/php-apache-shell:7.4 php-apache-shell/7.4
 docker pull h1cr.io/website/python-passenger:3.7 || echo 'Fail to pull h1cr.io/website/python-passenger:3.7'
 docker build --cache-from h1cr.io/website/python-passenger:3.7 -t h1cr.io/website/python-passenger:3.7 python-passenger/3.7
+docker pull h1cr.io/website/python-passenger:3.8 || echo 'Fail to pull h1cr.io/website/python-passenger:3.8'
+docker build --cache-from h1cr.io/website/python-passenger:3.8 -t h1cr.io/website/python-passenger:3.8 python-passenger/3.8
