@@ -1,10 +1,13 @@
 const fs = require('fs');
 const util = require('util');
+
 const readDir = util.promisify(fs.readdir);
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 const mkDir = util.promisify(fs.mkdir);
 const stat = util.promisify(fs.stat);
+const chmod = util.promisify(fs.chmod);
+
 const path = require('path');
 const Mustache = require('mustache');
 
@@ -39,6 +42,7 @@ const generateImage = async (source, output, context) => {
             continue;
         }
         await saveTemplated(sourceFile, context, outputFile);
+        await chmod(outputFile, s.mode);
     }
 };
 
