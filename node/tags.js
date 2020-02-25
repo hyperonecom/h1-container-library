@@ -7,6 +7,7 @@ module.exports = {
     "12": {
         "args": {
             "NODE_VERSION": "12"
-        }
-    }
+        },
+        "latest": true,
+    },
 };

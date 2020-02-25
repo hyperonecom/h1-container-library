@@ -90,6 +90,10 @@ const main = async () => {
             buildContent.push(`docker pull ${imageName} || echo 'Fail to pull ${imageName}'`);
             buildContent.push(`docker build --cache-from ${imageName} -t ${imageName} ${file}/${tag}`);
             deployContent.push(`docker push ${imageName}`);
+            if(config[tag].latest){
+                deployContent.push(`docker tag ${imageName} ${repo}/${file}:latest`)
+                deployContent.push(`docker push ${repo}/${file}:latest`)
+            }
             if (testEnabled) {
                 const env = Object.entries(tagConfig).map(([key, value]) => `TEST_${key}=${JSON.stringify(value)}`).join(" ");
                 testContent.push(`IMAGE="${imageName}" ${env} bats ${file}/test/*.bats`);

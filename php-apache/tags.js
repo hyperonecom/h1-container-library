@@ -39,6 +39,7 @@ module.exports = {
       "WP_CLI_VERSION": "2.4.0",
       "IMAGICK_VERSION": "3.4.4",
       "IONCUBE": false,
-    }
-  }
+    },
+    "latest": true,
+  },
 };
