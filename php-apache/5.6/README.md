@@ -26,7 +26,6 @@ Wykorzystywana jest następująca struktura katalogów:
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
 ```h1cr.io/website/php-apache:5.6```
-
 Kod aplikacji należy umieścić w ścieżce ```public```.
 
 ## Oprogramowanie

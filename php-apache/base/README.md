@@ -25,8 +25,10 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```{{IMAGE_NAME}}```
-
+```{{IMAGE_NAME}}:{{TAG}}```
+{{#LATEST}}
+Środowisko dostępne także jako ```{{IMAGE_NAME}}:latest``` w celu uzyskania stale najnowszej wersji PHP. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
+{{/LATEST}}
 Kod aplikacji należy umieścić w ścieżce ```public```.
 
 ## Oprogramowanie

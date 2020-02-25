@@ -24,6 +24,8 @@ W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskaz
 
 ```h1cr.io/website/python-passenger:3.8```
 
+Środowisko dostępne także jako ```h1cr.io/website/python-passenger:latest``` w celu uzyskania stale najnowszej wersji Python. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
+
 Kod aplikacji rekomendujemy umieścić w ścieżce ```app```, a plik startowy należy umieścić w ```app/passenger_wsgi.py```
 
 ## Oprogramowanie
@@ -36,7 +38,7 @@ Kod aplikacji rekomendujemy umieścić w ścieżce ```app```, a plik startowy na
 ### Interpreter Python
 
 Interpreter Python jest odpowiedzialny za obsługę przychodzącego żądania w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą języka Python.
-3
+
 Środowisko udostępnia najnowszą stabilną wersji Python 3.8. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
 Na przykład środowisko może zawierać Python 3.8.1, a później zostać zaktualizowane do Python 3.8.15, ale nie będzie automatycznie aktualizowane do wyższego wydania rzędu wskazanego w nazwie obrazu.

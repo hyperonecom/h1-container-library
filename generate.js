@@ -77,26 +77,28 @@ const main = async () => {
             const source = path.join(repositoryDir, 'base');
             const output = path.join(repositoryDir, tag);
             const tagConfig = config[tag].args || {};
-            const imageName = `${repo}/${file}:${tag}`;
+            const imageName = `${repo}/${file}`;
 
             const imageConfig = {
-                IMAGE_NAME: imageName
+                IMAGE_NAME: imageName,
+                TAG:tag,
+                LATEST: config[tag].latest
             };
 
             await stat(path.join(output, '.skip_base')).catch(err => {
                 if (err.code !== 'ENOENT') throw err;
                 return generateImage(source, output, { ...imageConfig, ...tagConfig });
             });
-            buildContent.push(`docker pull ${imageName} || echo 'Fail to pull ${imageName}'`);
-            buildContent.push(`docker build --cache-from ${imageName} -t ${imageName} ${file}/${tag}`);
-            deployContent.push(`docker push ${imageName}`);
+            buildContent.push(`docker pull ${imageName}:${tag} || echo 'Fail to pull ${imageName}:${tag}'`);
+            buildContent.push(`docker build --cache-from ${imageName}:${tag} -t ${imageName}:${tag} ${file}/${tag}`);
+            deployContent.push(`docker push ${imageName}:${tag}`);
             if(config[tag].latest){
-                deployContent.push(`docker tag ${imageName} ${repo}/${file}:latest`)
-                deployContent.push(`docker push ${repo}/${file}:latest`)
+                deployContent.push(`docker tag ${imageName}:${tag} ${imageName}:latest`)
+                deployContent.push(`docker push ${imageName}:latest`)
             }
             if (testEnabled) {
                 const env = Object.entries(tagConfig).map(([key, value]) => `TEST_${key}=${JSON.stringify(value)}`).join(" ");
-                testContent.push(`IMAGE="${imageName}" ${env} bats ${file}/test/*.bats`);
+                testContent.push(`IMAGE="${imageName}:${tag}" ${env} bats ${file}/test/*.bats`);
             }
         }
     }

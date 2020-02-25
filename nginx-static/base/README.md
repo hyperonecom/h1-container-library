@@ -21,7 +21,7 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```{{IMAGE_NAME}}```
+```{{IMAGE_NAME}}:{{TAG}}```
 
 W celu użycia z wykorzystaniem Docker należy wykorzystać następujące polecenie:
 

@@ -22,7 +22,11 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```{{IMAGE_NAME}}```
+```{{IMAGE_NAME}}:{{TAG}}```
+
+{{#LATEST}}
+Środowisko dostępne także jako ```{{IMAGE_NAME}}:latest``` w celu uzyskania stale najnowszej wersji Python. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
+{{/LATEST}}
 
 Kod aplikacji rekomendujemy umieścić w ścieżce ```app```, a plik startowy należy umieścić w ```app/passenger_wsgi.py```
 
@@ -36,7 +40,7 @@ Kod aplikacji rekomendujemy umieścić w ścieżce ```app```, a plik startowy na
 ### Interpreter Python
 
 Interpreter Python jest odpowiedzialny za obsługę przychodzącego żądania w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą języka Python.
-3
+
 Środowisko udostępnia najnowszą stabilną wersji Python {{PY_VERSION}}. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
 Na przykład środowisko może zawierać Python {{PY_VERSION}}.1, a później zostać zaktualizowane do Python {{PY_VERSION}}.15, ale nie będzie automatycznie aktualizowane do wyższego wydania rzędu wskazanego w nazwie obrazu.
