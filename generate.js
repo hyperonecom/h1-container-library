@@ -7,19 +7,18 @@ const writeFile = util.promisify(fs.writeFile);
 const mkDir = util.promisify(fs.mkdir);
 const stat = util.promisify(fs.stat);
 const chmod = util.promisify(fs.chmod);
-
+const { runProcess } = require('./lib');
 const path = require('path');
 const Mustache = require('mustache');
-
-Mustache.escape = function(text) {return text;};
+const argv = require('minimist')(process.argv.slice(2));
+Mustache.escape = function (text) { return text; };
 
 const ignoredDirectory = [
     'content',
     'node_modules',
 ];
 
-const repo = 'h1cr.io/website';
-
+const repo = argv.repository || 'h1cr.io/website';
 
 async function saveTemplated(sourceFile, context, outputFile) {
     const template = await readFile(sourceFile, { encoding: 'utf-8' });
@@ -47,12 +46,20 @@ const generateImage = async (source, output, context) => {
 };
 
 const main = async () => {
-    let buildContent = ['#!/bin/sh', 'set -eux'];
-    let deployContent = ['#!/bin/sh', 'set -eux'];
-    let testContent = ['#!/bin/sh', 'set -eux'];
+    if (!argv.f){
+        throw new Error("Usage: node generate.js -f image [-b|-t|-d]");
+        return;
+    }
+    if (!argv.b && !argv.t && !argv.g && !argv.t){
+        throw new Error("Abort. Nothing to do!");
+        return;
+    }
     const files = await readDir(__dirname);
     for (const file of files) {
         if (file.startsWith('.') || ignoredDirectory.includes(file)) {
+            continue;
+        }
+        if (!argv.f.split(',').includes(file)){
             continue;
         }
         const repositoryDir = path.join(__dirname, file);
@@ -61,50 +68,48 @@ const main = async () => {
             continue;
         }
         const sourceDir = path.join(repositoryDir, 'base');
-        try{
+        try {
             await stat(sourceDir);
-        }catch{
+        } catch{
             console.log(`Unable to access ${sourceDir}. Skip file`);
             continue;
         }
         const config = require(await path.join(repositoryDir, 'tags'));
         for (const tag of Object.keys(config)) {
-
             let testEnabled = true;
             await stat(path.join(repositoryDir, 'test')).catch(() => {
                 testEnabled = false;
             });
             const source = path.join(repositoryDir, 'base');
             const output = path.join(repositoryDir, tag);
-            const tagConfig = config[tag].args || {};
+            const tagContext = config[tag].args || {};
             const imageName = `${repo}/${file}`;
 
             const imageConfig = {
                 IMAGE_NAME: imageName,
-                TAG:tag,
+                TAG: tag,
                 LATEST: config[tag].latest
             };
-
             await stat(path.join(output, '.skip_base')).catch(err => {
                 if (err.code !== 'ENOENT') throw err;
-                return generateImage(source, output, { ...imageConfig, ...tagConfig });
+                if(argv.g){
+                    return generateImage(source, output, { ...imageConfig, ...tagContext });
+                };
             });
-            buildContent.push(`docker pull ${imageName}:${tag} || echo 'Fail to pull ${imageName}:${tag}'`);
-            buildContent.push(`docker build --cache-from ${imageName}:${tag} -t ${imageName}:${tag} ${file}/${tag}`);
-            deployContent.push(`docker push ${imageName}:${tag}`);
-            if(config[tag].latest){
-                deployContent.push(`docker tag ${imageName}:${tag} ${imageName}:latest`)
-                deployContent.push(`docker push ${imageName}:latest`)
+            if(argv.b){
+                await build(imageName, tag, file, config);
             }
-            if (testEnabled) {
-                const env = Object.entries(tagConfig).map(([key, value]) => `TEST_${key}=${JSON.stringify(value)}`).join(" ");
-                testContent.push(`IMAGE="${imageName}:${tag}" ${env} bats ${file}/test/*.bats`);
+            if (argv.t){
+                if(!testEnabled){
+                    throw new Error(`Tests not available for ${imageName}`);
+                }
+                await test(imageName, tag, tagContext, file);
+            };
+            if(argv.p){
+                await push(imageName, tag, config);
             }
         }
     }
-    await writeFile(path.join(__dirname, 'build.sh'), buildContent.join("\n"));
-    await writeFile(path.join(__dirname, 'test.sh'), testContent.join("\n"));
-    await writeFile(path.join(__dirname, 'deploy.sh'), deployContent.join("\n"));
 };
 
 main().then(console.log).catch(err => {
@@ -112,3 +117,25 @@ main().then(console.log).catch(err => {
     console.error(err.stack);
     process.exit(1);
 });
+async function push(imageName, tag, config) {
+    await runProcess('docker', ['push', `${imageName}:${tag}`]);
+    if (config[tag].latest) {
+        await runProcess('docker', ['push', `${imageName}:${tag}`]);
+    }
+}
+
+async function test(imageName, tag, tagContext, file) {
+    const env = { IMAGE: `${imageName}:${tag}` };
+    Object.entries(tagContext).map(([key, value]) => {
+        env[`TEST_${key}`] = JSON.stringify(value);
+    });
+    await runProcess(`bats`, [`${file}/test/run.bats`], { env });
+}
+
+async function build(imageName, tag, file) {
+    await runProcess('docker', ['pull', `${imageName}:${tag}`]).catch(err => {
+        console.log(`Fail to pull '${imageName}:${tag}':${err}`);
+    });
+    await runProcess('docker', ['build', '--cache-from', `${imageName}:${tag}`, '-t', `${imageName}:${tag}`, `${file}/${tag}`]);
+}
+
