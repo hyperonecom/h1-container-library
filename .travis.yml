@@ -5,18 +5,25 @@ node_js: 12
 services:
   - docker
 
+env:
+  - FAMILY=nginx-static,debian-shell
+  - FAMILY=node
+  - FAMILY=php-apache,php-apache-shell
+  - FAMILY=python-passenger
+
 script:
   - npm install
-  - node -c ./*/tags.js
-  - node ./generate.js
+  - NODE=$(which node)
+  - $NODE -c ./*/tags.js
+  - $NODE ./generate.js -f "$FAMILY" -g
   - git status
   - git diff HEAD
-  - test -z "$(git status --porcelain docs)"
-  - ./build.sh
-  - sudo ./test.sh
+  - test -z "$(git status --porcelain $FAMILY)"
+  - $NODE ./generate.js -f "$FAMILY" -b
+  - sudo $NODE ./generate.js -f "$FAMILY" -t
 
 deploy:
   provider: script
-  script: ./deploy-travis.sh
+  script: ./deploy.sh
   on:
     branch: master

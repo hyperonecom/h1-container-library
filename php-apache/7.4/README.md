@@ -26,7 +26,7 @@ Wykorzystywana jest następująca struktura katalogów:
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
 ```h1cr.io/website/php-apache:7.4```
-
+Środowisko dostępne także jako ```h1cr.io/website/php-apache:latest``` w celu uzyskania stale najnowszej wersji PHP. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
 Kod aplikacji należy umieścić w ścieżce ```public```.
 
 ## Oprogramowanie

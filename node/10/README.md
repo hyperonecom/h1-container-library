@@ -22,6 +22,7 @@ W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskaz
 
 ```h1cr.io/website/node:10```
 
+
 Kod aplikacji należy umieścić w ścieżce ```app```, a punkt startowy w ```app/index.js```
 
 ## Oprogramowanie
