@@ -4,7 +4,7 @@
   "description": "Runtime environment for Website service",
   "main": "generate.js",
   "dependencies": {
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.2",
     "mustache": "^4.0.0"
   },
   "devDependencies": {},
