@@ -15,6 +15,7 @@ RUN fetchDeps="gnupg lsb-release" \
 && rm -rf /var/lib/apt/lists/*
 RUN curl -s -L "https://github.com/wp-cli/wp-cli/releases/download/v${WP_CLI_VERSION}/wp-cli-${WP_CLI_VERSION}.phar" -o /usr/local/bin/wp \
 && chmod +x /usr/local/bin/wp
+COPY --from=h1cr.io/ws-server /opt/ws-server /opt/ws-server
 RUN ln -s /usr/lib/openssh/sftp-server /usr/bin/sftp-server
 WORKDIR /data
 USER run-user

@@ -47,10 +47,10 @@ const generateImage = async (source, output, context) => {
 
 const main = async () => {
     if (!argv.f){
-        throw new Error("Usage: node generate.js -f image [-b|-t|-d]");
+        throw new Error("Usage: node generate.js -f image [-g|-b|-t|-p]");
         return;
     }
-    if (!argv.b && !argv.t && !argv.g && !argv.t){
+    if (!argv.g && !argv.b && !argv.t && !argv.p){
         throw new Error("Abort. Nothing to do!");
         return;
     }
