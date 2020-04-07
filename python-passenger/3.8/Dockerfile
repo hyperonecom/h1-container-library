@@ -19,7 +19,6 @@ RUN apt-get update \
 && dpkg-reconfigure --frontend=noninteractive locales \
 && update-locale LANG=en_US.UTF-8 \
 && rm -rf /var/lib/apt/lists/*
-COPY --from=h1cr.io/ws-server /opt/ws-server /opt/ws-server
 ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8

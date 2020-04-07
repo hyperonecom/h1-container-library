@@ -120,7 +120,8 @@ main().then(console.log).catch(err => {
 async function push(imageName, tag, config) {
     await runProcess('docker', ['push', `${imageName}:${tag}`]);
     if (config[tag].latest) {
-        await runProcess('docker', ['push', `${imageName}:${tag}`]);
+        await runProcess('docker', ['tag', `${imageName}:${tag}`, `${imageName}:latest`]);
+        await runProcess('docker', ['push', `${imageName}:latest`]);
     }
 }
 

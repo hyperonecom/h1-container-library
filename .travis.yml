@@ -6,10 +6,10 @@ services:
   - docker
 
 env:
-  - FAMILY=nginx-static,debian-shell
-  - FAMILY=node
-  - FAMILY=php-apache,php-apache-shell
-  - FAMILY=python-passenger
+  - FAMILY=nginx-static,nginx-console,debian-shell
+  - FAMILY=node,node-console
+  - FAMILY=php-apache,php-apache-shell,php-console
+  - FAMILY=python-passenger,python-console
 
 script:
   - npm install
