@@ -101,9 +101,10 @@ const main = async () => {
             }
             if (argv.t){
                 if(!testEnabled){
-                    throw new Error(`Tests not available for ${imageName}`);
+                    console.log(`Tests not available for ${imageName}`);
+                }else{
+                    await test(imageName, tag, tagContext, file);
                 }
-                await test(imageName, tag, tagContext, file);
             };
             if(argv.p){
                 await push(imageName, tag, config);
