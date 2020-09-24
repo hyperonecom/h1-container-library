@@ -41,5 +41,6 @@ module.exports = {
       "IONCUBE": false,
     },
     "latest": true,
+    "packages": ["php"],
   },
 };

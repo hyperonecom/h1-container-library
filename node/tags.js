@@ -9,5 +9,6 @@ module.exports = {
             "NODE_VERSION": "12"
         },
         "latest": true,
+        "packages": ["nodejs"],
     },
 };

@@ -55,6 +55,7 @@ const main = async () => {
         return;
     }
     const files = await readDir(__dirname);
+
     for (const file of files) {
         if (file.startsWith('.') || ignoredDirectory.includes(file)) {
             continue;
@@ -118,6 +119,7 @@ main().then(console.log).catch(err => {
     console.error(err.stack);
     process.exit(1);
 });
+
 async function push(imageName, tag, config) {
     await runProcess('docker', ['push', `${imageName}:${tag}`]);
     if (config[tag].latest) {
