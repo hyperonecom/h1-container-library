@@ -12,5 +12,6 @@ module.exports = {
             "PYTHON_LIBS": "libmariadbclient18 libmariadbclient-dev libffi-dev libssl-dev libjpeg-dev libpng-dev libxml2-dev libxslt1-dev libjpeg62 python3-dev build-essential"
         },
         "latest": true,
+        "packages": ["python"],
     }
 }

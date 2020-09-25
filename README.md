@@ -22,6 +22,6 @@ Common software in shell image: ```curl less git less rsync wget nano mc vim mar
 | ```h1cr.io/website/php-apache``` | ```5.6```, ```7.2```, ```7.3```, ```7.4``` | ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) |
 | ```h1cr.io/website/php-apache-shell``` | ```5.6```, ```7.2```, ```7.3```, ```7.4``` | ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) |
 | ```h1cr.io/website/php-console``` | ```5.6```, ```7.2```, ```7.3```, ```7.4``` | ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) |
-| ```h1cr.io/website/python-console``` | ```3.7```, ```3.8``` |  |
-| ```h1cr.io/website/python-passenger``` | ```3.7```, ```3.8``` |  |
+| ```h1cr.io/website/python-console``` | ```3.7```, ```3.8``` | ![Package: python](https://repology.org/badge/latest-versions/python.svg?header=python) |
+| ```h1cr.io/website/python-passenger``` | ```3.7```, ```3.8``` | ![Package: python](https://repology.org/badge/latest-versions/python.svg?header=python) |
 <!-- toc-end -->
