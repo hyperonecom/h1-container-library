@@ -17,8 +17,8 @@ Common software in shell image: ```curl less git less rsync wget nano mc vim mar
 | ```h1cr.io/website/debian-shell``` | ```latest``` |  |
 | ```h1cr.io/website/nginx-console``` | ```latest``` |  |
 | ```h1cr.io/website/nginx-static``` | ```latest``` |  |
-| ```h1cr.io/website/node``` | ```10```, ```12``` | ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) |
-| ```h1cr.io/website/node-console``` | ```10```, ```12``` | ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) |
+| ```h1cr.io/website/node``` | ```12```, ```14``` | ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) |
+| ```h1cr.io/website/node-console``` | ```12```, ```14``` | ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) |
 | ```h1cr.io/website/php-apache``` | ```5.6```, ```7.2```, ```7.3```, ```7.4``` | ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) |
 | ```h1cr.io/website/php-apache-shell``` | ```5.6```, ```7.2```, ```7.3```, ```7.4``` | ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) |
 | ```h1cr.io/website/php-console``` | ```5.6```, ```7.2```, ```7.3```, ```7.4``` | ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) |
