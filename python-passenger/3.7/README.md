@@ -86,7 +86,6 @@ Następujące zmienne środowiskowe są ustawione w środowisku:
 
 W interaktywnej konsoli jest dostępne m. in. następujące oprogramowanie:
 
-* composer
 * curl
 * h1-cli
 * mariadb-client
