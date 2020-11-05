@@ -10,6 +10,7 @@ env:
   - FAMILY=node,node-console
   - FAMILY=php-apache,php-apache-shell,php-console
   - FAMILY=python-passenger,python-console
+  - FAMILY=ruby-passenger,ruby-console
 
 script:
   - npm install
