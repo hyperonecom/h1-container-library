@@ -1,18 +1,25 @@
 #!/usr/bin/env bats
 
-# @test "page load" {
-# 	tmp_dir=$(mktemp -d);
-# 	random_port=$((((RANDOM + RANDOM) % 63001) + 2000))
-# 	mkdir ${tmp_dir}/app/;
-# 	cp "${BATS_TEST_DIRNAME}/passenger_wsgi.py" "${tmp_dir}/app/passenger_wsgi.py"
-# 	chmod -o+rx "$tmp_dir";
-# 	container_id=$(docker run --rm -d -v "${tmp_dir}:/data/" -p "$random_port:8080" "$IMAGE");
-# 	sleep 3
-# 	run curl "localhost:$random_port/"
-# 	[ "$status" -eq 0 ]
-# 	[[ "$output" == *"Hello world"* ]]
-# 	docker container stop $container_id;
-# }
+@test "use root to start test" {
+	run id -u
+	[[ "$output" -eq "0" ]]
+}
+
+@test "page load" {
+	tmp_dir=$(mktemp -d);
+	random_port=$((((RANDOM + RANDOM) % 63001) + 2000))
+	mkdir ${tmp_dir}/app/;
+	cp "${BATS_TEST_DIRNAME}/config.ru" "${tmp_dir}/app/config.ru"
+	chmod -o+rx "$tmp_dir";
+	chown -R 23456:23456 "$tmp_dir"
+	container_id=$(docker run --rm -d -v "${tmp_dir}:/data/" -p "$random_port:8080" "$IMAGE");
+	docker exec -w /data/app $container_id gem install rack
+	sleep 3
+	run curl "localhost:$random_port"
+	[ "$status" -eq 0 ]
+	[[ "$output" == *"Hello World"* ]]
+	docker container stop $container_id;
+}
 
 @test "run h1-cli in image" {
 	run docker run --rm "$IMAGE" h1 --version
