@@ -1,0 +1,49 @@
+name: Build / Update
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron:  '0 0 * * *'
+
+jobs:
+  image:
+    needs: config
+    runs-on: self-hosted
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        family:
+        - nginx-static,nginx-console,debian-shell
+        - node,node-console
+        - php-apache,php-apache-shell,php-console
+        - python-passenger,python-console
+        - ruby-passenger,ruby-console
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: verify no pending changes
+        run: |
+          node ./generate.js -f "${{ matrix.family }}" -g
+          git status
+          git diff HEAD
+          test -z "$(git status --porcelain ${{ matrix.family }})"
+      - name: build images
+        run: node ./generate.js -f "${{ matrix.family }}" -b
+      - name: test images
+        run: node ./generate.js -f "${{ matrix.family }}" -t
+      - name: login to h1cr.io Registry
+        uses: docker/login-action@v1
+        with:
+          registry: h1cr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.REPOSITORY_TOKEN }}
+        if: success() && github.ref == 'refs/heads/master'
+      - name: deploy images
+        run: node ./generate.js -f "${{ matrix.family }}" -p
+        if: success() && github.ref == 'refs/heads/master'
