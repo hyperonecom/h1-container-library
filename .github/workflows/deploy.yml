@@ -8,7 +8,6 @@ on:
 
 jobs:
   image:
-    needs: config
     runs-on: self-hosted
     timeout-minutes: 90
     strategy:
