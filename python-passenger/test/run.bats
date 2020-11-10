@@ -33,3 +33,8 @@
 	run docker run --rm "$IMAGE" zip -v
   [ "$status" -eq 0 ]
 }
+
+@test "psql available" {
+	run docker run --rm "$IMAGE" psql --version
+  [ "$status" -eq 0 ]
+}

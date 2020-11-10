@@ -89,7 +89,7 @@ W interaktywnej konsoli jest dostępne m. in. następujące oprogramowanie:
 * mariadb-client
 * mc
 * nano
-* postgresql-client
+* postgresql-client-13
 * rsync
 * less
 * git
