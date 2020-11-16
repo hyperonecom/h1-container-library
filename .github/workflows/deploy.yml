@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 90
     strategy:
       fail-fast: false
-      max-parallel: 5
+      max-parallel: 3
       matrix:
         family:
         - nginx-static,nginx-console,debian-shell
