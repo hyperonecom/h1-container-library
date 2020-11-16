@@ -26,23 +26,25 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - name: verify no pending changes
+      - name: Install NodeJS dependencies
+        run: npm install
+      - name: Verify no pending changes
         run: |
           node ./generate.js -f "${{ matrix.family }}" -g
           git status
           git diff HEAD
           test -z "$(git status --porcelain ${{ matrix.family }})"
-      - name: build images
+      - name: Build images
         run: node ./generate.js -f "${{ matrix.family }}" -b
-      - name: test images
+      - name: Test images
         run: node ./generate.js -f "${{ matrix.family }}" -t
-      - name: login to h1cr.io Registry
+      - name: Login to h1cr.io Registry
         uses: docker/login-action@v1
         with:
           registry: h1cr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.REPOSITORY_TOKEN }}
         if: success() && github.ref == 'refs/heads/master'
-      - name: deploy images
+      - name: Deploy images
         run: node ./generate.js -f "${{ matrix.family }}" -p
         if: success() && github.ref == 'refs/heads/master'
