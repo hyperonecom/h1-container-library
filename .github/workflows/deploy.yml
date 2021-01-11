@@ -8,7 +8,7 @@ on:
 
 jobs:
   image:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     timeout-minutes: 90
     strategy:
       fail-fast: false
@@ -22,6 +22,10 @@ jobs:
         - ruby-passenger,ruby-console
     steps:
       - uses: actions/checkout@v2
+      - name: Setup BATS
+        uses: mig4/setup-bats@v1
+        with:
+          bats-version: 1.2.1
       - name: Set up Node 12.x
         uses: actions/setup-node@v1
         with:
