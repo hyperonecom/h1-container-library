@@ -37,6 +37,7 @@ jobs:
         run: npm install
       - name: Verify no pending changes
         run: |
+          type bats
           node ./generate.js -f "${{ matrix.family }}" -g
           git status
           git diff HEAD
