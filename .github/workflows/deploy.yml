@@ -43,7 +43,7 @@ jobs:
       - name: Build images
         run: node ./generate.js -f "${{ matrix.family }}" -b
       - name: Test images
-        run: node ./generate.js -f "${{ matrix.family }}" -t
+        run: sudo node ./generate.js -f "${{ matrix.family }}" -t
       - name: Login to h1cr.io Registry
         uses: docker/login-action@v1
         with:
