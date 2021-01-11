@@ -31,7 +31,7 @@ jobs:
           bats-version: 1.2.1
       - name: Detect bats path
         id: bats
-        run: echo "::set-output path=$(which bats)"
+        run: echo "::set-output name=path::$(which bats)"
       - name: Set up Node 12.x
         uses: actions/setup-node@v1
         with:
