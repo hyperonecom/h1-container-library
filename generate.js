@@ -46,11 +46,11 @@ const generateImage = async (source, output, context) => {
 };
 
 const main = async () => {
-    if (!argv.f){
+    if (!argv.f) {
         throw new Error("Usage: node generate.js -f image [-g|-b|-t|-p]");
         return;
     }
-    if (!argv.g && !argv.b && !argv.t && !argv.p){
+    if (!argv.g && !argv.b && !argv.t && !argv.p) {
         throw new Error("Abort. Nothing to do!");
         return;
     }
@@ -60,7 +60,7 @@ const main = async () => {
         if (file.startsWith('.') || ignoredDirectory.includes(file)) {
             continue;
         }
-        if (!argv.f.split(',').includes(file)){
+        if (!argv.f.split(',').includes(file)) {
             continue;
         }
         const repositoryDir = path.join(__dirname, file);
@@ -71,7 +71,7 @@ const main = async () => {
         const sourceDir = path.join(repositoryDir, 'base');
         try {
             await stat(sourceDir);
-        } catch{
+        } catch {
             console.log(`Unable to access ${sourceDir}. Skip file`);
             continue;
         }
@@ -93,21 +93,21 @@ const main = async () => {
             };
             await stat(path.join(output, '.skip_base')).catch(err => {
                 if (err.code !== 'ENOENT') throw err;
-                if(argv.g){
+                if (argv.g) {
                     return generateImage(source, output, { ...imageConfig, ...tagContext });
                 };
             });
-            if(argv.b){
+            if (argv.b) {
                 await build(imageName, tag, file, config);
             }
-            if (argv.t){
-                if(!testEnabled){
+            if (argv.t) {
+                if (!testEnabled) {
                     console.log(`Tests not available for ${imageName}`);
-                }else{
+                } else {
                     await test(imageName, tag, tagContext, file);
                 }
             };
-            if(argv.p){
+            if (argv.p) {
                 await push(imageName, tag, config);
             }
         }
@@ -137,9 +137,6 @@ async function test(imageName, tag, tagContext, file) {
 }
 
 async function build(imageName, tag, file) {
-    await runProcess('docker', ['pull', `${imageName}:${tag}`]).catch(err => {
-        console.log(`Fail to pull '${imageName}:${tag}':${err}`);
-    });
     await runProcess('docker', ['build', '--cache-from', `${imageName}:${tag}`, '-t', `${imageName}:${tag}`, `${file}/${tag}`]);
 }
 
