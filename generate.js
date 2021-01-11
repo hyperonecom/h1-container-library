@@ -47,7 +47,7 @@ const generateImage = async (source, output, context) => {
 
 const main = async () => {
     if (!argv.f) {
-        throw new Error("Usage: node generate.js -f image [-g|-b|-t|-p]");
+        throw new Error("Usage: node generate.js -f image [--bats bats-path] [-g|-b|-t|-p]");
         return;
     }
     if (!argv.g && !argv.b && !argv.t && !argv.p) {
@@ -133,7 +133,7 @@ async function test(imageName, tag, tagContext, file) {
     Object.entries(tagContext).map(([key, value]) => {
         env[`TEST_${key}`] = JSON.stringify(value);
     });
-    await runProcess(`bats`, [`${file}/test/run.bats`], { env });
+    await runProcess(process.env.BATS_PATH || 'bats', [`${file}/test/run.bats`], { env });
 }
 
 async function build(imageName, tag, file) {
