@@ -21,9 +21,13 @@ const ignoredDirectory = [
 const repo = argv.repository || 'h1cr.io/website';
 
 async function saveTemplated(sourceFile, context, outputFile) {
-    const template = await readFile(sourceFile, { encoding: 'utf-8' });
-    const content = Mustache.render(template, context);
-    await writeFile(outputFile, content, { encoding: 'utf-8' });
+    const template = await readFile(sourceFile);
+    if(outputFile.endsWith('.db')){
+        await writeFile(outputFile, template);
+    }else{
+        const content = Mustache.render(template.toString('utf-8'), context);
+        await writeFile(outputFile, content, { encoding: 'utf-8' });    
+    }
     console.log(`Saved templated '${sourceFile}' into '${outputFile}'`)
 }
 
@@ -137,15 +141,11 @@ async function test(imageName, tag, tagContext, file) {
 }
 
 async function build(imageName, tag, file) {
-<<<<<<< HEAD
-    await runProcess('docker', ['build', '--cache-from', `${imageName}:${tag}`, '-t', `${imageName}:${tag}`, `${file}/${tag}`]);
-=======
     let cache = ['--cache-from', `${imageName}:${tag}`];
     await runProcess('docker', ['pull', `${imageName}:${tag}`]).catch(err => {
         console.log(`Fail to pull '${imageName}:${tag}':${err}`);
         cache = [];
     });
     await runProcess('docker', ['build', ...cache, '-t', `${imageName}:${tag}`, `${file}/${tag}`]);
->>>>>>> 405c2f6... Add Ruby 3.0 console & passenger
 }
 
