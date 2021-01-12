@@ -1,6 +1,6 @@
 # h1-container-library
 
-[![Build Status](https://travis-ci.com/hyperonecom/h1-container-library.svg?branch=master)](https://travis-ci.com/hyperonecom/h1-container-library)
+![Build / Update](https://github.com/hyperonecom/h1-container-library/workflows/Build%20/%20Update/badge.svg)
 
 This repository contains the source for the HyperOne ```Website``` image.
 
