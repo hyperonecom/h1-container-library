@@ -137,6 +137,15 @@ async function test(imageName, tag, tagContext, file) {
 }
 
 async function build(imageName, tag, file) {
+<<<<<<< HEAD
     await runProcess('docker', ['build', '--cache-from', `${imageName}:${tag}`, '-t', `${imageName}:${tag}`, `${file}/${tag}`]);
+=======
+    let cache = ['--cache-from', `${imageName}:${tag}`];
+    await runProcess('docker', ['pull', `${imageName}:${tag}`]).catch(err => {
+        console.log(`Fail to pull '${imageName}:${tag}':${err}`);
+        cache = [];
+    });
+    await runProcess('docker', ['build', ...cache, '-t', `${imageName}:${tag}`, `${file}/${tag}`]);
+>>>>>>> 405c2f6... Add Ruby 3.0 console & passenger
 }
 
