@@ -23,6 +23,8 @@ jobs:
         - php-apache,php-apache-shell,php-console
         - python-passenger,python-console
         - ruby-passenger,ruby-console
+    env:
+      FAMILY: ${{ matrix.family }}
     steps:
       - uses: actions/checkout@v2
       - name: Setup BATS
@@ -40,14 +42,14 @@ jobs:
         run: npm install
       - name: Verify no pending changes
         run: |
-          node ./generate.js -f "${{ matrix.family }}" -g
+          node ./generate.js -f "$FAMILY" -g
           git status
           git diff HEAD
-          test -z "$(git status --porcelain ${{ matrix.family }})"
+          test -z "$(git status --porcelain "$FAMILY")"
       - name: Build images
-        run: node ./generate.js -f "${{ matrix.family }}" -b
+        run: node ./generate.js -f "$FAMILY" -b
       - name: Test images
-        run: sudo -E node ./generate.js -f "${{ matrix.family }}" -t
+        run: sudo -E node ./generate.js -f "$FAMILY" -t
         env:
           BATS_PATH: ${{ steps.bats.outputs.path }}
       - name: Login to h1cr.io Registry
@@ -56,7 +58,7 @@ jobs:
           registry: h1cr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.REPOSITORY_TOKEN }}
-        if: success() && github.ref == 'refs/heads/gh-actions-setup'
+        if: success() && github.ref == 'refs/heads/master'
       - name: Deploy images
-        run: node ./generate.js -f "${{ matrix.family }}" -p
-        if: success() && github.ref == 'refs/heads/gh-actions-setup'
+        run: node ./generate.js -f "$FAMILY" -p
+        if: success() && github.ref == 'refs/heads/master'
