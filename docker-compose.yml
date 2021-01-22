@@ -2,25 +2,30 @@ version: '3'
 
 services:
   reverse-proxy:
-    image: containous/traefik:latest # The official Traefik docker image
-    command: |
-      --api --docker
-      --entryPoints='Name:http Address::80'
-      --entryPoints='Name:https Address::443 TLS'
-      --logLevel=DEBUG
+    image: traefik:v2.3
+    command:
+      - --api
+      - --providers.docker=true
+      - --providers.docker.exposedByDefault=false
+      - --entryPoints.web.address=:80
+      - --entryPoints.websecure.address=:443
+    restart: always
     ports:
-      - "80:80"     # The HTTP port
-      - "8090:8080" # The Web UI (enabled by --api)
+      - "80:80"
+      - "8080:8080"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./acme/:/acme/
   php56:
     image: h1cr.io/website/php-apache:5.6
     read_only: true
     build:
       context: php-apache/5.6
     labels:
-      - "traefik.frontend.rule=Host:php56.127.0.0.1.xip.io"
-      - "traefik.port=8080"
+      - traefik.enable=true
+      - traefik.http.services.agent.loadbalancer.server.port=8080
+      - traefik.http.routers.php56_80.rule=Host(`php56.127.0.0.1.xip.io`)
+      - traefik.http.routers.php56_80.entrypoints=web
     volumes:
       - ./content/:/data/
       - ./content/tmp:/tmp
@@ -31,8 +36,10 @@ services:
     build:
       context: php-apache/7.2
     labels:
-      - "traefik.frontend.rule=Host:php72.127.0.0.1.xip.io"
-      - "traefik.port=8080"
+      - traefik.enable=true
+      - traefik.http.services.agent.loadbalancer.server.port=8080
+      - traefik.http.routers.php72_80.rule=Host(`php72.127.0.0.1.xip.io`)
+      - traefik.http.routers.php72_80.entrypoints=web
     volumes:
       - ./content/:/data/
       - ./content/tmp:/tmp
@@ -43,14 +50,18 @@ services:
     build:
       context: nginx-static/latest
     labels:
-      - "traefik.frontend.rule=Host:nginx.127.0.0.1.xip.io"
-      - "traefik.port=8080"
+      - traefik.enable=true
+      - traefik.http.services.agent.loadbalancer.server.port=8080
+      - traefik.http.routers.nginx_80.rule=Host(`nginx.127.0.0.1.xip.io`)
+      - traefik.http.routers.nginx_80.entrypoints=web
     volumes:
       - ./content/:/data/public
   node:
     image: h1cr.io/website/node:latest
     labels:
-      - "traefik.frontend.rule=Host:nginx.127.0.0.1.xip.io"
-      - "traefik.port=8080"
+      - traefik.enable=true
+      - traefik.http.services.agent.loadbalancer.server.port=8080
+      - traefik.http.routers.node_80.rule=Host(`node.127.0.0.1.xip.io`)
+      - traefik.http.routers.node_80.entrypoints=web
     volumes:
       - ./node/test/:/data/
