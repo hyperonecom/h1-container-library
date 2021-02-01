@@ -38,6 +38,16 @@ module.exports = {
       "MODULES": [...common, 'mcrypt', 'mysql'].sort().join(" "),
       "WP_CLI_VERSION": "2.4.0",
       "IMAGICK_VERSION": "3.4.4",
+      "IONCUBE": true,
+    },
+    "packages": ["php"],
+  },
+  "8.0": {
+    "args": {
+      "PHP_VERSION": "8.0",
+      "MODULES": [...common, 'mcrypt', 'mysql'].sort().join(" "),
+      "WP_CLI_VERSION": "2.4.0",
+      "IMAGICK_VERSION": "3.4.4",
       "IONCUBE": false,
     },
     "latest": true,

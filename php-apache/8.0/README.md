@@ -1,15 +1,15 @@
-# PHP-Apache 7.4
+# PHP-Apache 8.0
 
 ## Kluczowe funkcjonalności
 
-* Dostęp do PHP w wersji 7.4
+* Dostęp do PHP w wersji 8.0
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa .htaccess
 * Obsługa mod_rewrite (przyjazne URL)
 * Dostęp do WP-CLI w wersji 2.4.0
 * Własne strony błędów
 * Możliwość zabezpieczenia stron i katalogów hasłem
-* Umożliwia uruchomienie aplikacji zakodowanych z pomocą IonCube Loader
+
 
 ## Struktura katalogów
 
@@ -25,7 +25,7 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```h1cr.io/website/php-apache:7.4```
+```h1cr.io/website/php-apache:8.0```
 Środowisko dostępne także jako ```h1cr.io/website/php-apache:latest``` w celu uzyskania stale najnowszej wersji PHP. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
 Kod aplikacji należy umieścić w ścieżce ```public```.
 
@@ -40,9 +40,9 @@ Kod aplikacji należy umieścić w ścieżce ```public```.
 
 Interpreter PHP jest odpowiedzialny za współprace z Apache 2 w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą języka PHP.
 
-Środowisko udostępnia najnowszą stabilną wersji PHP 7.4. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
+Środowisko udostępnia najnowszą stabilną wersji PHP 8.0. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać PHP 7.4.12, a później zostać zaktualizowane do PHP 7.4.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
+Na przykład środowisko może zawierać PHP 8.0.12, a później zostać zaktualizowane do PHP 8.0.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
 
 #### Konfiguracja
 
