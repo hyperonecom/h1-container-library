@@ -65,3 +65,14 @@ services:
       - traefik.http.routers.node_80.entrypoints=web
     volumes:
       - ./node/test/:/data/
+  theia:
+    image: h1cr.io/website/theia:latest
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.agent.loadbalancer.server.port=3000
+      - traefik.http.routers.theia_80.rule=Host(`theia.127.0.0.1.xip.io`) && PathPrefix(`/theia/`)
+      - traefik.http.middlewares.strip_theia.stripprefix.prefixes=/theia
+      - traefik.http.routers.theia_80.entrypoints=web
+      - traefik.http.routers.theia_80.middlewares=strip_theia
+    volumes:
+      - ./node/test/:/home/project
