@@ -95,9 +95,9 @@ Następujące zmienne środowiskowe są ustawione w środowisku:
 
 | Zmienna środowiskowa  |                Opis                |
 | --------------------- | ---------------------------------- |
-| ```IMAGICK_VERSION``` | Dostepna wersja biblioteki Imagick |
-| ```PHP_VERSION```     | Dostepna wersja interpretera PHP   |
-| ```WP_CLI```          | Dostepna wersja narzedzia WP-CLI   |
+| ```IMAGICK_VERSION``` | Dostępna wersja biblioteki Imagick |
+| ```PHP_VERSION```     | Dostępna wersja interpretera PHP   |
+| ```WP_CLI```          | Dostępna wersja narzędzia WP-CLI   |
 
 ## Powłoka
 

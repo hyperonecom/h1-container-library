@@ -9,7 +9,7 @@
 * Dostęp do WP-CLI w wersji 2.4.0
 * Własne strony błędów
 * Możliwość zabezpieczenia stron i katalogów hasłem
-
+* Umożliwia uruchomienie aplikacji zakodowanych z pomocą IonCube Loader
 
 ## Struktura katalogów
 
@@ -26,7 +26,6 @@ Wykorzystywana jest następująca struktura katalogów:
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
 ```h1cr.io/website/php-apache:7.4```
-Środowisko dostępne także jako ```h1cr.io/website/php-apache:latest``` w celu uzyskania stale najnowszej wersji PHP. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
 Kod aplikacji należy umieścić w ścieżce ```public```.
 
 ## Oprogramowanie
@@ -96,9 +95,9 @@ Następujące zmienne środowiskowe są ustawione w środowisku:
 
 | Zmienna środowiskowa  |                Opis                |
 | --------------------- | ---------------------------------- |
-| ```IMAGICK_VERSION``` | Dostepna wersja biblioteki Imagick |
-| ```PHP_VERSION```     | Dostepna wersja interpretera PHP   |
-| ```WP_CLI```          | Dostepna wersja narzedzia WP-CLI   |
+| ```IMAGICK_VERSION``` | Dostępna wersja biblioteki Imagick |
+| ```PHP_VERSION```     | Dostępna wersja interpretera PHP   |
+| ```WP_CLI```          | Dostępna wersja narzędzia WP-CLI   |
 
 ## Powłoka
 
