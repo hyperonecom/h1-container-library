@@ -65,3 +65,12 @@ services:
       - traefik.http.routers.node_80.entrypoints=web
     volumes:
       - ./node/test/:/data/
+  filebrowser:
+    image: h1cr.io/website/filebrowser:latest
+    environment:
+        SIDEAPP_PREFIX: "/_secret_123/"
+    labels:
+      - "traefik.frontend.rule=Host:filebrowser.127.0.0.1.xip.io,PathPrefix=/_secret_123/"
+      - "traefik.port=8080"
+    volumes: 
+      - ./:/data

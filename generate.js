@@ -21,9 +21,13 @@ const ignoredDirectory = [
 const repo = argv.repository || 'h1cr.io/website';
 
 async function saveTemplated(sourceFile, context, outputFile) {
-    const template = await readFile(sourceFile, { encoding: 'utf-8' });
-    const content = Mustache.render(template, context);
-    await writeFile(outputFile, content, { encoding: 'utf-8' });
+    const template = await readFile(sourceFile);
+    if(outputFile.endsWith('.db')){
+        await writeFile(outputFile, template);
+    }else{
+        const content = Mustache.render(template.toString('utf-8'), context);
+        await writeFile(outputFile, content, { encoding: 'utf-8' });    
+    }
     console.log(`Saved templated '${sourceFile}' into '${outputFile}'`)
 }
 
