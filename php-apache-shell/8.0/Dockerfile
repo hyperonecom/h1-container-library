@@ -1,4 +1,4 @@
-FROM h1cr.io/website/php-apache:7.4
+FROM h1cr.io/website/php-apache:8.0
 LABEL maintainer="HyperOne"
 ENV WP_CLI_VERSION="2.1.0"
 RUN fetchDeps="gnupg lsb-release" \

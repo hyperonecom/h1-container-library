@@ -1,15 +1,15 @@
-# PHP-Apache {{PHP_VERSION}}
+# PHP-Apache 8.0
 
 ## Kluczowe funkcjonalności
 
-* Dostęp do PHP w wersji {{PHP_VERSION}}
+* Dostęp do PHP w wersji 8.0
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa .htaccess
 * Obsługa mod_rewrite (przyjazne URL)
-* Dostęp do WP-CLI w wersji {{WP_CLI_VERSION}}
+* Dostęp do WP-CLI w wersji 2.4.0
 * Własne strony błędów
 * Możliwość zabezpieczenia stron i katalogów hasłem
-{{#IONCUBE}}* Umożliwia uruchomienie aplikacji zakodowanych z pomocą IonCube Loader{{/IONCUBE}}
+
 
 ## Struktura katalogów
 
@@ -25,10 +25,8 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```{{IMAGE_NAME}}:{{TAG}}```
-{{#LATEST}}
-Środowisko dostępne także jako ```{{IMAGE_NAME}}:latest``` w celu uzyskania stale najnowszej wersji PHP. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
-{{/LATEST}}
+```h1cr.io/website/php-apache:8.0```
+Środowisko dostępne także jako ```h1cr.io/website/php-apache:latest``` w celu uzyskania stale najnowszej wersji PHP. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
 Kod aplikacji należy umieścić w ścieżce ```public```.
 
 ## Oprogramowanie
@@ -42,13 +40,13 @@ Kod aplikacji należy umieścić w ścieżce ```public```.
 
 Interpreter PHP jest odpowiedzialny za współprace z Apache 2 w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą języka PHP.
 
-Środowisko udostępnia najnowszą stabilną wersji PHP {{PHP_VERSION}}. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
+Środowisko udostępnia najnowszą stabilną wersji PHP 8.0. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać PHP {{PHP_VERSION}}.12, a później zostać zaktualizowane do PHP {{PHP_VERSION}}.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
+Na przykład środowisko może zawierać PHP 8.0.12, a później zostać zaktualizowane do PHP 8.0.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
 
 #### Konfiguracja
 
-Aktywne są następujące moduły interpretera PHP: ```{{MODULES}}```.
+Aktywne są następujące moduły interpretera PHP: ```bcmath bz2 calendar exif gd iconv intl ldap mbstring mcrypt memcached mysql mysql mysqli opcache pdo_mysql pdo_pgsql pgsql redis soap zip```.
 
 Wykorzystywane są domyślne parametry PHP.ini z wykluczeniem następujących:
 

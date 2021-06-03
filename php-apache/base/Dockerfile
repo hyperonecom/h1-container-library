@@ -15,9 +15,17 @@ RUN curl "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_$(u
 RUN apt-get update \
 # Following command add 200 MB dependencies
 && apt-get install -y --no-install-recommends zlib1g-dev libcurl3-dev libpng-dev libmagickwand-dev locales \
-&& rm -rf /var/lib/apt/lists/* \
-&& pecl install imagick-"$IMAGICK_VERSION" \
+&& rm -rf /var/lib/apt/lists/*
+{{^IMAGICK_GIT}}
+RUN pecl install imagick-"$IMAGICK_VERSION" \
 && docker-php-ext-enable imagick
+{{/IMAGICK_GIT}}
+{{#IMAGICK_GIT}}
+# use github version for now until release from https://pecl.php.net/get/imagick is ready for PHP 8
+RUN mkdir -p /usr/src/php/ext/imagick; \
+curl -fsSL https://github.com/Imagick/imagick/archive/06116aa24b76edaf6b1693198f79e6c295eda8a9.tar.gz | tar xvz -C "/usr/src/php/ext/imagick" --strip 1; \
+docker-php-ext-install imagick && docker-php-ext-install imagick
+{{/IMAGICK_GIT}}
 RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
 && dpkg-reconfigure --frontend=noninteractive locales \
 && update-locale LANG=en_US.UTF-8
