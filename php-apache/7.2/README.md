@@ -6,7 +6,7 @@
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa .htaccess
 * Obsługa mod_rewrite (przyjazne URL)
-* Dostęp do WP-CLI w wersji 2.4.0
+* Dostęp do WP-CLI w wersji 2.5.0
 * Własne strony błędów
 * Możliwość zabezpieczenia stron i katalogów hasłem
 * Umożliwia uruchomienie aplikacji zakodowanych z pomocą IonCube Loader
