@@ -48,7 +48,7 @@ module.exports = {
     "args": {
       "PHP_VERSION": "8.0",
       "MODULES": [...common, 'mcrypt', 'mysql'].sort().join(" "),
-      "WP_CLI_VERSION": "2.4.0",
+      WP_CLI_VERSION,
       "IMAGICK_VERSION": "3.4.4",
       "IONCUBE": false,
       "IMAGICK_GIT": true,

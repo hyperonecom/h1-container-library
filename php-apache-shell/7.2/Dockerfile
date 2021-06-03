@@ -1,6 +1,6 @@
 FROM h1cr.io/website/php-apache:7.2
 LABEL maintainer="HyperOne"
-ENV WP_CLI_VERSION="2.1.0"
+ENV WP_CLI_VERSION="2.5.0"
 RUN fetchDeps="gnupg lsb-release" \
 && VERSION_CODENAME=$(sed -E -n 's/VERSION=.*\((.+?)\).*$/\1/gp' /etc/os-release) \
 && apt-get update \
