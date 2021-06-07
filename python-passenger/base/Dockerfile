@@ -46,6 +46,6 @@ ADD ./start.sh /
 ADD ./nginx.conf /etc/nginx/nginx.conf
 ADD ./default_python.sh /bin/default_python
 ENV PYTHONPATH="/data/app/:$PATH"
-RUN adduser --uid 23456 --disabled-password --gecos "" --home /data run-user && mkdir /var/cache/nginx && chown run-user:run-user -R /data /var/cache/nginx/ /var/run/ /var/lib/nginx /tmp/nginx;
+RUN adduser --uid 23456 --disabled-password --gecos "" --home /data run-user && mkdir /var/cache/nginx /usr/share/nginx/passenger_temp && chown run-user:run-user -R /data /var/cache/nginx/ /var/run/ /var/lib/nginx /usr/share/nginx/passenger_temp /tmp/nginx;
 USER run-user
 CMD ["/start.sh"]
