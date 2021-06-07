@@ -1,8 +1,8 @@
-# Python 3.8
+# Python 3.9
 
 ## Kluczowe funkcjonalności
 
-* Dostęp do Python w wersji 3.8
+* Dostęp do Python w wersji 3.9
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa HTTP i WebSocket
 
@@ -22,8 +22,9 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```h1cr.io/website/python-passenger:3.8```
+```h1cr.io/website/python-passenger:3.9```
 
+Środowisko dostępne także jako ```h1cr.io/website/python-passenger:latest``` w celu uzyskania stale najnowszej wersji Python. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
 
 Kod aplikacji rekomendujemy umieścić w ścieżce ```app```, a plik startowy należy umieścić w ```app/passenger_wsgi.py```
 
@@ -31,16 +32,16 @@ Kod aplikacji rekomendujemy umieścić w ścieżce ```app```, a plik startowy na
 
 Środowisko udostępnia następujące oprogramowanie:
 
-* Python 3.8
+* Python 3.9
 * Nginx wraz z modułem mod_passenger
 
 ### Interpreter Python
 
 Interpreter Python jest odpowiedzialny za obsługę przychodzącego żądania w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą języka Python.
 
-Środowisko udostępnia najnowszą stabilną wersji Python 3.8. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
+Środowisko udostępnia najnowszą stabilną wersji Python 3.9. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać Python 3.8.1, a później zostać zaktualizowane do Python 3.8.15, ale nie będzie automatycznie aktualizowane do wyższego wydania rzędu wskazanego w nazwie obrazu.
+Na przykład środowisko może zawierać Python 3.9.1, a później zostać zaktualizowane do Python 3.9.15, ale nie będzie automatycznie aktualizowane do wyższego wydania rzędu wskazanego w nazwie obrazu.
 
 #### Konfiguracja
 
