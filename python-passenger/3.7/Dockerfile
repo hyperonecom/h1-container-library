@@ -1,4 +1,4 @@
-FROM python:3.7-slim
+FROM python:3.7-slim-buster
 LABEL maintainer="HyperOne"
 LABEL rbx.shell_cmd="/bin/bash"
 WORKDIR /data
