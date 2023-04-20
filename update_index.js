@@ -4,8 +4,8 @@ const path = require('path');
 
 const repository = 'h1cr.io/website';
 const indexFile = 'README.md';
-const markerStart = `<!-- toc-start -->\n`;
-const markerEnd = `<!-- toc-end -->\n`;
+const markerStart = '<!-- toc-start -->\n';
+const markerEnd = '<!-- toc-end -->\n';
 
 const listImage = async () => {
     const images = [];
@@ -19,16 +19,16 @@ const listImage = async () => {
         const tags = Object.keys(config);
         const packages = Object.values(config).map(x => x.packages).flat().filter(x => !!x);
 
-        images.push({ name, tags, packages })
+        images.push({ name, tags, packages });
     }
     return images;
 };
 
-const quote = (v) => '```' + v + '```';
+const quote = (v) => ['```', v, '```'].join('');
 
 const generateToc = (images) => {
     const line = [];
-    line.push('| Image | Tag | Repology latest |')
+    line.push('| Image | Tag | Repology latest |');
     line.push('|------ | --- | --------------- |');
     for (const image of images) {
         const row = [
@@ -38,7 +38,7 @@ const generateToc = (images) => {
         ];
         line.push(`| ${row.join(' | ')} |`);
     };
-    return line.join("\n") + "\n";
+    return `${line.join('\n')}\n`;
 };
 
 const updateIndex = async (index) => {
