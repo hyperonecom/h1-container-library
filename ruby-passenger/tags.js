@@ -1,16 +1,16 @@
 'use strict';
 module.exports = {
-    "2.7": {
-        "args": {
-            "RUBY_VERSION": "2.7",
+    '2.7': {
+        args: {
+            RUBY_VERSION: '2.7'
         },
-        "packages": ["ruby"]
+        packages: ['ruby']
     },
-    "3.0": {
-        "args": {
-            "RUBY_VERSION": "3.0",
+    '3.0': {
+        args: {
+            RUBY_VERSION: '3.0'
         },
-        "latest": true,
-        "packages": ["ruby"]
+        latest: true,
+        packages: ['ruby']
     }
-}
+};

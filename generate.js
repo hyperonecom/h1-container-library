@@ -15,20 +15,20 @@ Mustache.escape = function (text) { return text; };
 
 const ignoredDirectory = [
     'content',
-    'node_modules',
+    'node_modules'
 ];
 
 const repo = argv.repository || 'h1cr.io/website';
 
 async function saveTemplated(sourceFile, context, outputFile) {
     const template = await readFile(sourceFile);
-    if(outputFile.endsWith('.db')){
+    if (outputFile.endsWith('.db')) {
         await writeFile(outputFile, template);
-    }else{
+    } else {
         const content = Mustache.render(template.toString('utf-8'), context);
-        await writeFile(outputFile, content, { encoding: 'utf-8' });    
+        await writeFile(outputFile, content, { encoding: 'utf-8' });
     }
-    console.log(`Saved templated '${sourceFile}' into '${outputFile}'`)
+    console.log(`Saved templated '${sourceFile}' into '${outputFile}'`);
 }
 
 const generateImage = async (source, output, context) => {
@@ -51,11 +51,12 @@ const generateImage = async (source, output, context) => {
 
 const main = async () => {
     if (!argv.f) {
-        throw new Error("Usage: node generate.js -f image [--bats bats-path] [-g|-b|-t|-p]");
-        return;
+        console.error('Usage: node generate.js -f image [--bats bats-path] [-g|-b|-t|-p]');
+        process.exit(-1);
     }
+
     if (!argv.g && !argv.b && !argv.t && !argv.p) {
-        throw new Error("Abort. Nothing to do!");
+        console.error('Abort. Nothing to do!');
         return;
     }
     const files = await readDir(__dirname);
@@ -118,7 +119,7 @@ const main = async () => {
     }
 };
 
-main().then(console.log).catch(err => {
+main().catch(err => {
     console.error(err);
     console.error(err.stack);
     process.exit(1);

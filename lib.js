@@ -2,10 +2,10 @@ const {spawn} = require('child_process');
 
 const runProcess = (cmd, args = [], opts = {}) => new Promise((resolve, reject) => {
     const env = opts.env || {};
-    console.log(`Started: ${cmd} ${args.join(" ")}`);
+    console.log(`Started: ${cmd} ${args.join(' ')}`);
     const proc = spawn(cmd, args, {
         env: { ...process.env, ...env},
-        stdio: 'inherit',
+        stdio: 'inherit'
     });
     proc.on('close', (code) => {
         if (code !== 0) {
@@ -16,5 +16,5 @@ const runProcess = (cmd, args = [], opts = {}) => new Promise((resolve, reject) 
 });
 
 module.exports = {
-    runProcess,
-}
+    runProcess
+};

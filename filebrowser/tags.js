@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
-    "latest": {
-        "latest": true,
-        "args": {}
+    latest: {
+        latest: true,
+        args: {}
     }
-}
+};

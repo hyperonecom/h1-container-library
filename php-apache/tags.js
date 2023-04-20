@@ -1,5 +1,5 @@
 const common = [
-    'bcmath', 'bz2', 'calendar', 'exif', 'iconv', 'intl', 'gd', 'ldap',
+  'bcmath', 'bz2', 'calendar', 'exif', 'iconv', 'intl', 'gd', 'ldap',
   'mbstring', 'memcached', 'mysql', 'mysqli', 'pdo_mysql', 'pdo_pgsql',
   'pgsql', 'redis', 'soap', 'opcache', 'zip'
 ];
@@ -7,47 +7,47 @@ const common = [
 const WP_CLI_VERSION = '2.5.0';
 
 module.exports = {
-  "5.6": {
-    "args": {
-      "PHP_VERSION": "5.6",
+  '5.6': {
+    args: {
+      PHP_VERSION: '5.6',
       WP_CLI_VERSION,
-      "MODULES": [...common, 'mcrypt', 'ioncube', 'mysql'].sort().join(" "),
-      "IONCUBE": true,
+      MODULES: [...common, 'mcrypt', 'ioncube', 'mysql'].sort().join(' '),
+      IONCUBE: true
     }
   },
-  "7.2": {
-    "args": {
-      "PHP_VERSION": "7.2",
-      "MODULES": [...common, 'mcrypt', 'ioncube', 'mysql'].sort().join(" "),
+  '7.2': {
+    args: {
+      PHP_VERSION: '7.2',
+      MODULES: [...common, 'mcrypt', 'ioncube', 'mysql'].sort().join(' '),
       WP_CLI_VERSION,
-      "IONCUBE": true,
+      IONCUBE: true
     }
   },
-  "7.3": {
-    "args": {
-      "PHP_VERSION": "7.3",
-      "MODULES": [...common, 'mcrypt', 'ioncube', 'mysql'].sort().join(" "),
+  '7.3': {
+    args: {
+      PHP_VERSION: '7.3',
+      MODULES: [...common, 'mcrypt', 'ioncube', 'mysql'].sort().join(' '),
       WP_CLI_VERSION,
-      "IONCUBE": true,
+      IONCUBE: true
     }
   },
-  "7.4": {
-    "args": {
-      "PHP_VERSION": "7.4",
-      "MODULES": [...common, 'mcrypt', 'mysql'].sort().join(" "),
+  '7.4': {
+    args: {
+      PHP_VERSION: '7.4',
+      MODULES: [...common, 'mcrypt', 'mysql'].sort().join(' '),
       WP_CLI_VERSION,
-      "IONCUBE": true,
+      IONCUBE: true
     },
-    "packages": ["php"],
+    packages: ['php']
   },
-  "8.0": {
-    "args": {
-      "PHP_VERSION": "8.0",
-      "MODULES": [...common, 'mcrypt', 'mysql'].sort().join(" "),
+  '8.0': {
+    args: {
+      PHP_VERSION: '8.0',
+      MODULES: [...common, 'mcrypt', 'mysql'].sort().join(' '),
       WP_CLI_VERSION,
-      "IONCUBE": false,
+      IONCUBE: false
     },
-    "latest": true,
-    "packages": ["php"],
-  },
+    latest: true,
+    packages: ['php']
+  }
 };
