@@ -1,14 +1,14 @@
 module.exports = {
-    "12": {
-        "args": {
-            "NODE_VERSION": "12"
-        },
+    12: {
+        args: {
+            NODE_VERSION: '12'
+        }
     },
-    "14": {
-        "args": {
-            "NODE_VERSION": "14"
+    14: {
+        args: {
+            NODE_VERSION: '14'
         },
-        "latest": true,
-        "packages": ["nodejs"],
+        latest: true,
+        packages: [ 'nodejs' ]
     }
 };

@@ -10,5 +10,5 @@ server.on('clientError', (err, socket) => {
 });
 
 server.listen(process.env.PORT, function () {
-    console.log('listening', this.address())
+  console.log('listening', this.address());
 });
