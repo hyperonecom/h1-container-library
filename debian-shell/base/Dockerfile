@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:10
 LABEL maintainer="HyperOne"
 RUN apt-get update \
 && apt-get install -y --no-install-recommends ca-certificates less rsync git curl zip unzip wget nano mc vim mariadb-client openssh-sftp-server subversion locales \
