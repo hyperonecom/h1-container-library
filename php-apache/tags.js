@@ -11,7 +11,6 @@ module.exports = {
     "args": {
       "PHP_VERSION": "5.6",
       WP_CLI_VERSION,
-      "IMAGICK_VERSION": "3.4.4",
       "MODULES": [...common, 'mcrypt', 'ioncube', 'mysql'].sort().join(" "),
       "IONCUBE": true,
     }
@@ -21,7 +20,6 @@ module.exports = {
       "PHP_VERSION": "7.2",
       "MODULES": [...common, 'mcrypt', 'ioncube', 'mysql'].sort().join(" "),
       WP_CLI_VERSION,
-      "IMAGICK_VERSION": "3.4.4",
       "IONCUBE": true,
     }
   },
@@ -30,7 +28,6 @@ module.exports = {
       "PHP_VERSION": "7.3",
       "MODULES": [...common, 'mcrypt', 'ioncube', 'mysql'].sort().join(" "),
       WP_CLI_VERSION,
-      "IMAGICK_VERSION": "3.4.4",
       "IONCUBE": true,
     }
   },
@@ -39,7 +36,6 @@ module.exports = {
       "PHP_VERSION": "7.4",
       "MODULES": [...common, 'mcrypt', 'mysql'].sort().join(" "),
       WP_CLI_VERSION,
-      "IMAGICK_VERSION": "3.4.4",
       "IONCUBE": true,
     },
     "packages": ["php"],
@@ -49,9 +45,7 @@ module.exports = {
       "PHP_VERSION": "8.0",
       "MODULES": [...common, 'mcrypt', 'mysql'].sort().join(" "),
       WP_CLI_VERSION,
-      "IMAGICK_VERSION": "3.4.4",
       "IONCUBE": false,
-      "IMAGICK_GIT": true,
     },
     "latest": true,
     "packages": ["php"],
