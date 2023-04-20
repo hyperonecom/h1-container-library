@@ -49,9 +49,18 @@ const generateImage = async (source, output, context) => {
     }
 };
 
+const usage = `
+Usage: node generate.js -f image [--bats bats-path] [-g|-b|-t|-p]
+
+-f image directory (one or more, separated by coma, eg: node,node-console)
+-g generate
+-b build
+-p push
+`.trimStart();
+
 const main = async () => {
     if (!argv.f) {
-        console.error('Usage: node generate.js -f image [--bats bats-path] [-g|-b|-t|-p]');
+        console.error(usage);
         process.exit(-1);
     }
 
