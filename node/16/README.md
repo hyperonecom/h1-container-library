@@ -1,8 +1,8 @@
-# Node 14
+# Node 16
 
 ## Kluczowe funkcjonalności
 
-* Dostęp do NodeJS w wersji 14
+* Dostęp do NodeJS w wersji 16
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa HTTP i WebSocket
 
@@ -20,7 +20,7 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```h1cr.io/website/node:14```
+```h1cr.io/website/node:16```
 
 Środowisko dostępne także z wykorzystaniem identyfikatora ```h1cr.io/website/node:latest``` w celu uzyskania stale najnowszej wersji NodeJS. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
 
@@ -30,15 +30,15 @@ Kod aplikacji należy umieścić w ścieżce ```app```, a punkt startowy w ```ap
 
 Środowisko udostępnia następujące oprogramowanie:
 
-* NodeJS 14
+* NodeJS 16
 
 ### Interpreter NodeJS
 
-Interpreter NodeJS jest odpowiedzialny za obsługę przychodzącego żądania i udzielenia  w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą język 14.
+Interpreter NodeJS jest odpowiedzialny za obsługę przychodzącego żądania i udzielenia  w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą język 16.
 
-Środowisko udostępnia najnowszą stabilną wersji NodeJS 14. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
+Środowisko udostępnia najnowszą stabilną wersji NodeJS 16. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać NodeJS 14.1.1, a później zostać zaktualizowane do NodeJS 14.2.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
+Na przykład środowisko może zawierać NodeJS 16.1.1, a później zostać zaktualizowane do NodeJS 16.2.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
 
 #### Nagłówki żądąnia
 

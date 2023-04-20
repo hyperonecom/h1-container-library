@@ -36,7 +36,7 @@ Kod aplikacji należy umieścić w ścieżce ```app```, a punkt startowy w ```ap
 
 ### Interpreter NodeJS
 
-Interpreter NodeJS jest odpowiedzialny za obsługę przychodzącego żądania i udzielenia  w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą język {{NODE_VERSION}}{{NODE_VERSION}}.
+Interpreter NodeJS jest odpowiedzialny za obsługę przychodzącego żądania i udzielenia  w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą język {{NODE_VERSION}}.
 
 Środowisko udostępnia najnowszą stabilną wersji NodeJS {{NODE_VERSION}}. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
