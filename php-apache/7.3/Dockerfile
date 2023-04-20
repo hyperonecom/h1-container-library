@@ -9,10 +9,6 @@ RUN curl "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_$(u
 && tar -xzvf /tmp/ioncube.tar.gz --strip-components=1 -C "$extension_dir" "ioncube/ioncube_loader_lin_7.3.so" \
 && chown root:staff "$extension_dir/ioncube_loader_lin_7.3.so" \
 && rm /tmp/ioncube.tar.gz
-RUN apt-get update \
-# Following command add 200 MB dependencies
-&& apt-get install -y --no-install-recommends zlib1g-dev libcurl3-dev libpng-dev libmagickwand-dev locales \
-&& rm -rf /var/lib/apt/lists/*
 RUN apt-get update && apt-get install -y \
     locales \
     && rm -rf /var/lib/apt/lists/*

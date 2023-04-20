@@ -23,7 +23,6 @@ W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskaz
 
 ```h1cr.io/website/ruby-passenger:2.7```
 
-Środowisko dostępne także jako ```h1cr.io/website/ruby-passenger:latest``` w celu uzyskania stale najnowszej wersji Python. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
 
 Kod aplikacji rekomendujemy umieścić w ścieżce ```app```, a plik startowy należy umieścić w ```app/config.ru```
 

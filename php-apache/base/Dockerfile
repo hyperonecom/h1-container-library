@@ -1,7 +1,6 @@
 FROM chialab/php:{{PHP_VERSION}}-apache
 LABEL maintainer="HyperOne"
 LABEL rbx.shell_image="h1cr.io/website/php-apache-shell:{{PHP_VERSION}}"
-ENV IMAGICK_VERSION="{{IMAGICK_VERSION}}"
 COPY ./site.conf /etc/apache2/sites-available/000-default.conf
 COPY ./ports.conf /etc/apache2/ports.conf
 RUN sed -i 's@Directory /var/www/@Directory /data/public@g' /etc/apache2/conf-available/docker-php.conf /etc/apache2/apache2.conf
