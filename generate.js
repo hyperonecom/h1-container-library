@@ -56,6 +56,7 @@ Usage: node generate.js -f image [--bats bats-path] [-g|-b|-t|-p]
 -g generate
 -b build
 -p push
+-t test
 `.trimStart();
 
 const main = async () => {
@@ -144,6 +145,7 @@ async function push(imageName, tag, config) {
 
 async function test(imageName, tag, tagContext, file) {
     const env = { IMAGE: `${imageName}:${tag}` };
+    console.log('testing', env);
     Object.entries(tagContext).map(([key, value]) => {
         env[`TEST_${key}`] = JSON.stringify(value);
     });
