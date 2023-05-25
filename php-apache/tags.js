@@ -7,14 +7,6 @@ const common = [
 const WP_CLI_VERSION = '2.5.0';
 
 module.exports = {
-  '5.6': {
-    args: {
-      PHP_VERSION: '5.6',
-      WP_CLI_VERSION,
-      MODULES: [...common, 'mcrypt', 'ioncube', 'mysql'].sort().join(' '),
-      IONCUBE: true
-    }
-  },
   '7.2': {
     args: {
       PHP_VERSION: '7.2',
