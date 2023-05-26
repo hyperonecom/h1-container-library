@@ -22,7 +22,6 @@ W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskaz
 
 ```h1cr.io/website/node:16```
 
-Środowisko dostępne także z wykorzystaniem identyfikatora ```h1cr.io/website/node:latest``` w celu uzyskania stale najnowszej wersji NodeJS. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
 
 Kod aplikacji należy umieścić w ścieżce ```app```, a punkt startowy w ```app/index.js```
 

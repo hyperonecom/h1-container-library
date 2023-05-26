@@ -1,8 +1,8 @@
-# Node 18
+# Node 20
 
 ## Kluczowe funkcjonalności
 
-* Dostęp do NodeJS w wersji 18
+* Dostęp do NodeJS w wersji 20
 * Kompatybilność z usługą *Baza danych* w wariancie PostgreSQL i MySQL
 * Obsługa HTTP i WebSocket
 
@@ -20,8 +20,9 @@ Wykorzystywana jest następująca struktura katalogów:
 
 W celu użycia w ramach usługi *Strona* podczas utworzenia strony należy wskazać środowisko wykonawcze z wykorzystaniem identyfikatora:
 
-```h1cr.io/website/node:18```
+```h1cr.io/website/node:20```
 
+Środowisko dostępne także z wykorzystaniem identyfikatora ```h1cr.io/website/node:latest``` w celu uzyskania stale najnowszej wersji NodeJS. W przypadku wydania nowej wersji to oznaczenie to będzie wskazywać na nową wersje.
 
 Kod aplikacji należy umieścić w ścieżce ```app```, a punkt startowy w ```app/index.js```
 
@@ -29,15 +30,15 @@ Kod aplikacji należy umieścić w ścieżce ```app```, a punkt startowy w ```ap
 
 Środowisko udostępnia następujące oprogramowanie:
 
-* NodeJS 18
+* NodeJS 20
 
 ### Interpreter NodeJS
 
-Interpreter NodeJS jest odpowiedzialny za obsługę przychodzącego żądania i udzielenia  w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą język 18.
+Interpreter NodeJS jest odpowiedzialny za obsługę przychodzącego żądania i udzielenia  w celu udzielenia odpowiedzi dynamicznej odpowiedzi wygenerowanej z pomocą język 20.
 
-Środowisko udostępnia najnowszą stabilną wersji NodeJS 18. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
+Środowisko udostępnia najnowszą stabilną wersji NodeJS 20. W środowisku mogą zostać wprowadzone nowe drobne poprawki, ale nie ulega zmianie główna wersja.
 
-Na przykład środowisko może zawierać NodeJS 18.1.1, a później zostać zaktualizowane do NodeJS 18.2.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
+Na przykład środowisko może zawierać NodeJS 20.1.1, a później zostać zaktualizowane do NodeJS 20.2.15, ale nie będzie automatycznie aktualizowana do wyższego wydania głównego.
 
 #### Nagłówki żądąnia
 
