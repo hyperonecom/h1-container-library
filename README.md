@@ -18,8 +18,8 @@ Common software in shell image: ```curl less git less rsync wget nano mc vim mar
 | ```h1cr.io/website/filebrowser``` | ```latest``` |  |
 | ```h1cr.io/website/nginx-console``` | ```latest``` |  |
 | ```h1cr.io/website/nginx-static``` | ```latest``` |  |
-| ```h1cr.io/website/node``` | ```12```, ```14```, ```16```, ```18``` | ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) |
-| ```h1cr.io/website/node-console``` | ```12```, ```14```, ```16```, ```18``` | ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) |
+| ```h1cr.io/website/node``` | ```16```, ```18``` | ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) |
+| ```h1cr.io/website/node-console``` | ```16```, ```18``` | ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) ![Package: nodejs](https://repology.org/badge/latest-versions/nodejs.svg?header=nodejs) |
 | ```h1cr.io/website/php-apache``` | ```7.2```, ```7.3```, ```7.4```, ```8.0``` | ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) |
 | ```h1cr.io/website/php-apache-shell``` | ```7.2```, ```7.3```, ```7.4```, ```8.0``` | ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) |
 | ```h1cr.io/website/php-console``` | ```7.2```, ```7.3```, ```7.4```, ```8.0``` | ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) ![Package: php](https://repology.org/badge/latest-versions/php.svg?header=php) |
