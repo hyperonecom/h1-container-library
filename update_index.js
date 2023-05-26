@@ -55,7 +55,7 @@ const main = async () => {
     await updateIndex(index);
 };
 
-main().then(console.log).catch(err => {
+main().catch(err => {
     console.error(err);
     console.error(err.stack);
     process.exit(1);
