@@ -11,7 +11,7 @@ on:
 
 jobs:
   image:
-    runs-on: ubuntu-20.04
+    runs-on: [self-hosted, organisation]
     timeout-minutes: 90
     strategy:
       fail-fast: false
